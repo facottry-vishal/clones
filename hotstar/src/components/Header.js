@@ -9,6 +9,7 @@ import {
   setUserLoginDetails,
   setSignOutState,
 } from "../features/user/userSlice";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -21,19 +22,22 @@ const Header = () => {
   useEffect(() => {
     const fetchConfig = async () => {
       try {
-        const response = await fetch("https://facottry-server.onrender.com/scale/get-mapping", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            filter: {
-              COUNTRY: "IN",
-              SUBSCRIPTION: "PAID",
+        const response = await fetch(
+          "https://facottry-server.onrender.com/scale/get-mapping",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
             },
-            projectID: "vishal_72d8f604-cb87-4358-8dc8-1d53a96670c9",
-          }),
-        });
+            body: JSON.stringify({
+              filter: {
+                COUNTRY: "IN",
+                SUBSCRIPTION: "PAID",
+              },
+              projectID: "vishal_72d8f604-cb87-4358-8dc8-1d53a96670c9",
+            }),
+          }
+        );
 
         const data = await response.json();
         if (data.code === "FOUND") {
@@ -111,7 +115,15 @@ const Header = () => {
       </Logo>
 
       {!userName ? (
-        appConfig.Login && <Login onClick={handleAuth}>Login</Login>
+        appConfig.Login && (
+          <div>
+            <Login onClick={handleAuth}>Login</Login>
+
+            <Login>
+              <Link to={"/home"}>Dashboard</Link>
+            </Login>
+          </div>
+        )
       ) : (
         <>
           <NavMenu>
@@ -164,19 +176,13 @@ const Header = () => {
   );
 };
 
-
-
-
-
-
-
 const Nav = styled.nav`
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   height: 70px;
-  background-color: rgb(20,27,41);
+  background-color: rgb(20, 27, 41);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -242,7 +248,7 @@ const NavMenu = styled.div`
         transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
         visibility: hidden;
         width: auto;
-     }
+      }
     }
     &:hover {
       span:before {
@@ -258,19 +264,19 @@ const NavMenu = styled.div`
 `;
 
 const Login = styled.a`
-background-color:rgba(0,0,0,0.6) ;
-padding:8px 16px ;
-letter-spacing:1.5px;
-border:1px solid #f9f9f9 ;
-border-radius:4px;
-transition:all 0.2s ease 0s ;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 8px 16px;
+  letter-spacing: 1.5px;
+  border: 1px solid #f9f9f9;
+  border-radius: 4px;
+  transition: all 0.2s ease 0s;
 
-&:hover{
-    background-color: #f9f9f9 ;
+  &:hover {
+    background-color: #f9f9f9;
     color: #000;
     border-color: transparent;
-} 
-`
+  }
+`;
 const UserImg = styled.img`
   height: 100%;
 `;
@@ -310,4 +316,4 @@ const SignOut = styled.div`
     }
   }
 `;
-export default Header
+export default Header;

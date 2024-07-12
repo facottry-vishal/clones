@@ -5,7 +5,7 @@ import "./App.css";
 import Home from "./components/Home";
 import Detail from "./components/Details";
 import Play from "./components/Play";
-import ReactPlayer from 'react-player';
+import ReactPlayer from "react-player";
 
 function App() {
   return (
@@ -14,19 +14,20 @@ function App() {
         <Header />
         <Switch>
           <Route exact path="/">
+            {/* <Login /> */}
             <Login />
           </Route>
           <Route path="/home">
             <Home />
           </Route>
-          
+
           <Route path="/detail/:id">
             <Detail />
           </Route>
           <Route Path="/Play">
-          <Play />
+            <Play />
           </Route>
-          </Switch>
+        </Switch>
       </Router>
     </div>
   );
