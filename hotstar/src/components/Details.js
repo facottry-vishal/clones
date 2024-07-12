@@ -11,7 +11,7 @@ const Detail = () => {
   useEffect(() => {
     const fetchConfig = async () => {
       try {
-        const response = await fetch("https://facottry-backend.onrender.com/scale/get-mapping", {
+        const response = await fetch("https://facottry-server.onrender.com/scale/get-mapping", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -44,10 +44,10 @@ const Detail = () => {
         if (doc.exists) {
           setDetailData(doc.data());
         } else {
-          console.log("No such document in firebase 🔥");
+          // console.log("No such document in firebase 🔥");
         }
       } catch (error) {
-        console.log("Error getting document:", error);
+        // console.log("Error getting document:", error);
       }
     };
 

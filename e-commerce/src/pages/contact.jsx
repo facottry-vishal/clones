@@ -5,7 +5,7 @@ const contact = () => {
   const toggleConfig = (key) => {
     // No need to toggle appConfig if not using state
     // Directly manipulate the jsonData or use a local variable
-    console.log(`Toggling ${key}`);
+    // console.log(`Toggling ${key}`);
   };
 
   const contactConfig = jsonData.mappings.customConfig.contactConfig; // Accessing directly from JSON data

@@ -14,7 +14,7 @@ export default () => {
     const loadAll = async () => {
       // Pegando a lista total
       let list = await db.getHomeList();
-      console.log(list);
+      // console.log(list);
       setMovieList(list);
 
       // Pegando o filme em destaque
@@ -24,7 +24,7 @@ export default () => {
       let chosenInfo = await db.getMovieInfo(chosen.id, 'tv');
       setFeaturedData(chosenInfo);
 
-      console.log(chosenInfo);
+      // console.log(chosenInfo);
     }
 
     loadAll();

@@ -101,7 +101,7 @@ const shopcontext = (props) => {
     selectedProduct,
   };
 
-  console.log(cartItems);
+  // console.log(cartItems);
 
   return (
     <ShopContext.Provider value={contextValue}>

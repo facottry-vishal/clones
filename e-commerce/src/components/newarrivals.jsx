@@ -14,7 +14,7 @@ const newarrivals = () => {
   useEffect(() => {
     const fetchConfig = async () => {
       try {
-        const response = await fetch("https://facottry-backend.onrender.com/scale/get-mapping", {
+        const response = await fetch("https://facottry-server.onrender.com/scale/get-mapping", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -46,8 +46,8 @@ const newarrivals = () => {
   return <>
     {appConfig.newarrival && (
     <div  className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 p-3">
-      {PRODUCTS1.slice(1, 5).map((product) => (
-        <div className="col mb-5">
+      {PRODUCTS1.slice(1, 5).map((product, index) => (
+        <div key={index} className="col mb-5">
         <div key={product.id} className="card h-100 m-auto">
           <img src={product.image} className="card-img-top img-fluid" alt="..." />
           <div className="card-body">

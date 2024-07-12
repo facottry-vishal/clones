@@ -10,7 +10,7 @@ const Play = () => {
   useEffect(() => {
     const fetchConfig = async () => {
       try {
-        const response = await fetch("https://facottry-backend.onrender.com/scale/get-mapping", {
+        const response = await fetch("https://facottry-server.onrender.com/scale/get-mapping", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -118,7 +118,7 @@ export default Play;
 //     });
 
 //     this.player.ready(() => {
-//       console.log('Player is ready');
+//       // console.log('Player is ready');
 //     });
 
 //     this.player.on('error', (e) => {

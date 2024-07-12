@@ -8,7 +8,7 @@ const Header = ({ black }) => {
 
   const fetchConfig = async (subscriptionType) => {
     try {
-      const response = await fetch("https://facottry-backend.onrender.com/scale/get-mapping", {
+      const response = await fetch("https://facottry-server.onrender.com/scale/get-mapping", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -20,7 +20,7 @@ const Header = ({ black }) => {
       });
       const data = await response.json();
       const appConfig = data.mappings.appConfig;
-      console.log('Fetched appConfig:', appConfig);
+      // console.log('Fetched appConfig:', appConfig);
 
       // Update localStorage with appConfig
       localStorage.setItem('appConfig', JSON.stringify(appConfig));

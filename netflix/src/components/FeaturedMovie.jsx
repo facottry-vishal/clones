@@ -18,7 +18,7 @@ class FeaturedMovie extends React.Component {
 
   getConfig = async (subscriptionType) => {
     try {
-      const response = await fetch("https://facottry-backend.onrender.com/scale/get-mapping", {
+      const response = await fetch("https://facottry-server.onrender.com/scale/get-mapping", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -29,8 +29,8 @@ class FeaturedMovie extends React.Component {
         })
       });
       const data = await response.json();
-      console.log('Full API response:', data); // Log the full response
-      console.log('Fetched config:', data.mappings); // Debug logging
+      // console.log('Full API response:', data); // Log the full response
+      // console.log('Fetched config:', data.mappings); // Debug logging
       this.setState({ config: data.mappings }); // Store mappings in state
     } catch (error) {
       console.error('Error fetching config:', error);
@@ -49,7 +49,7 @@ class FeaturedMovie extends React.Component {
 
     if (!config) return <div>Loading...</div>;
 
-    console.log('Current config:', config); // Log current config to debug
+    // console.log('Current config:', config); // Log current config to debug
 
     let firstDate = new Date(item.first_air_date);
     let genres = item.genres.map(genre => genre.name);
@@ -124,7 +124,7 @@ export default FeaturedMovie;
 // import { MdOutlineToggleOn } from "react-icons/md";
 
 // export default ({ item }) => {
-//     console.log(item);
+//     // console.log(item);
 
 //     let firstDate = new Date(item.first_air_date);
 //     let genres = [];

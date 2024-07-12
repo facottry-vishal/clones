@@ -14,7 +14,7 @@ const MovieRow = ({ title, items }) => {
   useEffect(() => {
     const fetchConfig = async () => {
       try {
-        const response = await fetch('https://facottry-backend.onrender.com/scale/get-mapping', {
+        const response = await fetch('https://facottry-server.onrender.com/scale/get-mapping', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -26,7 +26,7 @@ const MovieRow = ({ title, items }) => {
         });
         const data = await response.json();
         const appConfig = data.mappings.appConfig;
-        console.log('Fetched appConfig:', appConfig);
+        // console.log('Fetched appConfig:', appConfig);
 
         // Update window.mode with appConfig
         window.mode.appConfig = appConfig;
@@ -84,7 +84,7 @@ const MovieRow = ({ title, items }) => {
 
   if (!window.mode.appConfig) return <div>Loading...</div>;
 
-  console.log('Current config:', window.mode.appConfig); // Log current config to debug
+  // console.log('Current config:', window.mode.appConfig); // Log current config to debug
 
   return (
     <div className="movieRow updated"> {/* Ensure the class 'updated' is initially present */}
