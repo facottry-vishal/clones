@@ -1,0 +1,22 @@
+
+.play-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 100px;
+     height: 100%  !important;
+   
+    
+    
+    }
+    
+    .play-container h1 {
+    margin-bottom: 20px;
+    }
+    
+    .play-container .React-Player {
+    max-width: 800px;
+    width: 100%;
+    height: 100% !important;
+   
+    }
