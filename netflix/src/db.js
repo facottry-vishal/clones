@@ -1,6 +1,6 @@
 // db.js
 const API_KEY = 'd851ead6';
-const API_BASE = 'http://www.omdbapi.com/';
+const API_BASE = 'https://www.omdbapi.com/';
 
 const basicFetch = async (endpoint) => {
     const req = await fetch(`${API_BASE}${endpoint}&apikey=${API_KEY}`);
