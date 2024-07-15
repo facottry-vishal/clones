@@ -1,0 +1,32 @@
+{
+    "code": "FOUND",
+    "message": "Success",
+    "mappings": {
+        "appConfig": {
+            "originalname": true,
+            "vote": true,
+            "year": true,
+            "Actor": true,
+            "overview": true,
+            "Towatch": true,
+            "Menu": true,
+            "genres": true,
+            "biglogo": true,
+            "smalllogo": true,
+            "title": true,
+            "movielist": true,
+            "movieRowright": true,
+            "movieRowlist": true,
+            "movieRowitem": true
+        },
+        "playerConfig": {
+            "settingButton": "false"
+        },
+        "filter": {
+            "COUNTRY": "IN",
+            "SUBSCRIPTION": "FREE"
+        },
+        "projectID": "vishal_72d8f604-cb87-4358-8dc8-1d53a96670c9",
+        "companyID": "vishal_c22f3172-1e83-47e8-97fc-f921eca1ed73"
+    }
+}

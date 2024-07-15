@@ -1,72 +1,62 @@
-const API_KEY = 'c7cb0be3f34a33be52796001f56051a3';
-const API_BASE = 'https://api.themoviedb.org/3';
+// db.js
+const API_KEY = 'd851ead6';
+const API_BASE = 'http://www.omdbapi.com/';
 
 const basicFetch = async (endpoint) => {
-    const req = await fetch(`${API_BASE}${endpoint}`);
+    const req = await fetch(`${API_BASE}${endpoint}&apikey=${API_KEY}`);
     const json = await req.json();
     return json;
-}
+};
+
+const transformItem = (item) => ({
+    poster: item.Poster,
+    title: item.Title,
+    type: item.Type,
+    year: item.Year,
+    imdbID: item.imdbID,
+    genre: item.Genre,
+    imdbVotes: item.imdbVotes,
+    Country: item.Country,
+    Actors: item.Actors,
+    Plot: item.Plot,
+});
+
+const fetchDetailedInfo = async (imdbID) => {
+    const data = await basicFetch(`?i=${imdbID}`);
+    return transformItem(data);
+};
 
 export default {
     getHomeList: async () => {
-        return [
-            {
-                slug: 'originals',
-                title: 'Netflix Originals',
-                items: await basicFetch(`/discover/tv?with_networks=213&language=en-US&api_key=${API_KEY}`)
-            },
-            {
-                slug: 'sci-fi',
-                title: 'Sci-Fi',
-                items: await basicFetch(`/discover/movie?with_genres=878&language=en-US&api_key=${API_KEY}`)
-            },
-            {
-                slug: 'fantasy',
-                title: 'Fantasy',
-                items: await basicFetch(`/discover/movie?with_genres=14&language=en-US&api_key=${API_KEY}`)
-            },
-            {
-                slug: 'action',
-                title: 'Action',
-                items: await basicFetch(`/discover/movie?with_genres=28&language=en-US&api_key=${API_KEY}`)
-            },
-            {
-                slug: 'comedy',
-                title: 'Comedy',
-                items: await basicFetch(`/discover/movie?with_genres=35&language=en-US&api_key=${API_KEY}`)
-            },
-            {
-                slug: 'horror',
-                title: 'Horror',
-                items: await basicFetch(`/discover/movie?with_genres=27&language=en-US&api_key=${API_KEY}`)
-            },
-            {
-                slug: 'romance',
-                title: 'Romance',
-                items: await basicFetch(`/discover/movie?with_genres=10749&language=en-US&api_key=${API_KEY}`)
-            },
-            {
-                slug: 'documentary',
-                title: 'Documentaries',
-                items: await basicFetch(`/discover/movie?with_genres=99&language=en-US&api_key=${API_KEY}`)
-            },
+        const categories = [
+            { slug: 'originals', title: 'Netflix Originals', search: 'movie', type: 'series' },
+            { slug: 'sci-fi', title: 'Sci-Fi', search: 'series', type: 'series' },
+            { slug: 'fantasy', title: 'Fantasy', search: 'fantasy', type: 'movie' },
+            { slug: 'action', title: 'Action', search: 'action', type: 'movie' },
+            { slug: 'comedy', title: 'Comedy', search: 'comedy', type: 'movie' },
+            { slug: 'horror', title: 'Horror', search: 'horror', type: 'movie' },
+            { slug: 'romance', title: 'Romance', search: 'romance', type: 'movie' },
+            { slug: 'documentary', title: 'Documentaries', search: 'documentary', type: 'movie' },
         ];
+
+        const promises = categories.map(async (category) => {
+            const data = await basicFetch(`?s=${category.search}&type=${category.type}`);
+            const detailedItemsPromises = data.Search.map(async (item) => await fetchDetailedInfo(item.imdbID));
+            const detailedItems = await Promise.all(detailedItemsPromises);
+
+            return {
+                slug: category.slug,
+                title: category.title,
+                items: detailedItems
+            };
+        });
+
+        return Promise.all(promises);
     },
     getMovieInfo: async (movieId, type) => {
-        let info = {};
-        if (movieId) {
-            switch (type) {
-                case 'movie':
-                    info = await basicFetch(`/movie/${movieId}?language=en-US&api_key=${API_KEY}`)
-                    break;
-                case 'tv':
-                    info = await basicFetch(`/tv/${movieId}?language=en-US&api_key=${API_KEY}`)
-                    break;
-                default:
-                    info = null;
-                    break;
-            }
-        }
-        return info;
+        if (!movieId) return null;
+
+        const data = await basicFetch(`?i=${movieId}&type=${type}`);
+        return transformItem(data);
     }
-}
+};
