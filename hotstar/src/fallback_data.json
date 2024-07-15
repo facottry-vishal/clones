@@ -1,0 +1,56 @@
+{
+    "code": "FOUND",
+    "message": "Success",
+    "mappings": {
+        "appConfig": {
+            "home": true,
+            "search": true,
+            "userName": true,
+            "Signout": true,
+            "series": true,
+            "movies": true,
+            "originals": true,
+            "watchlist": true,
+            "Login": true,
+            "Disney": true,
+            "imgone": true,
+            "imgtwo": true,
+            "imgthree": true,
+            "imgfour": true,
+            "videodisney": true,
+            "videopixer": true,
+            "videomarvel": true,
+            "videostarwars": true,
+            "videonational": true,
+            "recommended": true,
+            "movierecommended": true,
+            "newtodisney": true,
+            "newmovies": true,
+            "originalheading": true,
+            "originalmovies": true,
+            "trendingheading": true,
+            "trendingmovies": true,
+            "detailimage": true,
+            "detailtitle": true,
+            "player": true,
+            "trailer": true,
+            "groupimage": true,
+            "subtitle": true,
+            "description": true,
+            "loginimages": true,
+            "singaleline": true,
+            "descriptionline": true,
+            "images": true
+        },
+        "playerConfig": {
+            "playvideo": false,
+            "videourl": false
+        },
+        "filter": {
+            "COUNTRY": "IN",
+            "SUBSCRIPTION": "FREE"
+        },
+        "projectID": "vishal_72d8f604-cb87-4358-8dc8-1d53a96670c9",
+        "companyID": "vishal_c22f3172-1e83-47e8-97fc-f921eca1ed73"
+    }
+}

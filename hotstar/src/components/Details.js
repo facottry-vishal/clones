@@ -3,39 +3,9 @@ import { useParams, Link } from "react-router-dom";
 import styled from "styled-components";
 import db from "../firebase";
 
-const Detail = () => {
+const Detail = ({ appConfig }) => {
   const { id } = useParams();
   const [detailData, setDetailData] = useState({});
-  const [appConfig, setAppConfig] = useState(null);
-
-  useEffect(() => {
-    const fetchConfig = async () => {
-      try {
-        const response = await fetch("https://facottry-server.onrender.com/scale/get-mapping", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            filter: {
-              COUNTRY: "IN",
-              SUBSCRIPTION: "PAID",
-            },
-            projectID: "vishal_72d8f604-cb87-4358-8dc8-1d53a96670c9",
-          }),
-        });
-
-        const data = await response.json();
-        if (data.code === "FOUND") {
-          setAppConfig(data.mappings.appConfig);
-        }
-      } catch (error) {
-        console.error("Error fetching config:", error);
-      }
-    };
-
-    fetchConfig();
-  }, []);
 
   useEffect(() => {
     const fetchDetailData = async () => {
@@ -44,22 +14,15 @@ const Detail = () => {
         if (doc.exists) {
           setDetailData(doc.data());
         } else {
-          // console.log("No such document in firebase 🔥");
+          console.log("No such document in firebase ");
         }
       } catch (error) {
-        // console.log("Error getting document:", error);
+        console.log("Error getting document:", error);
       }
     };
 
     fetchDetailData();
   }, [id]);
-
-  const toggleFeature = (key) => {
-    setAppConfig((prevConfig) => ({
-      ...prevConfig,
-      [key]: !prevConfig[key],
-    }));
-  };
 
   if (!appConfig) {
     return <div>Loading...</div>;

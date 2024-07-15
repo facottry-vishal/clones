@@ -5,27 +5,34 @@ import "./App.css";
 import Home from "./components/Home";
 import Detail from "./components/Details";
 import Play from "./components/Play";
-import ReactPlayer from "react-player";
+import useFetchConfig from "./useFetch";
 
 function App() {
+  const { appConfig, playerConfig, stale } = useFetchConfig();
+
   return (
     <div className="App">
+      {stale && (
+        <div className="stale">
+          <p>No Mapping / Project Found (Rendering Default Site)</p>
+        </div>
+      )}
       <Router>
-        <Header />
+        <Header appConfig={appConfig} />
         <Switch>
           <Route exact path="/">
             {/* <Login /> */}
-            <Login />
+            <Login appConfig={appConfig} />
           </Route>
           <Route path="/home">
-            <Home />
+            <Home appConfig={appConfig} />
           </Route>
 
           <Route path="/detail/:id">
-            <Detail />
+            <Detail appConfig={appConfig} />
           </Route>
           <Route Path="/Play">
-            <Play />
+            <Play playerConfig={playerConfig} />
           </Route>
         </Switch>
       </Router>
