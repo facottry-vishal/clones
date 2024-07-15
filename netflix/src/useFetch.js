@@ -1,39 +1,41 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import fallbackData from "./fallback_data.json";
+import axios from "axios";
 
 const useFetchConfig = () => {
   const [appConfig, setAppConfig] = useState(null);
   const [stale, setStale] = useState(true);
-  console.log("appConfig", appConfig);
 
   useEffect(() => {
     const fetchConfig = async () => {
       try {
         const params = new URLSearchParams(window.location.search);
         const urlParams = Object.fromEntries(params.entries());
-        let projectID = urlParams.projectID || "vishal_72d8f604-cb87-4358-8dc8-1d53a96670c9";
-        
-        console.log("projectID", projectID);
+        const projectID = urlParams.projectID;
 
-        const response = await fetch(
+        if (!projectID) {
+          setAppConfig(fallbackData.mappings.appConfig);
+          setStale(true);
+          return;
+        }
+
+        const response = await axios.post(
           "https://facottry-server.onrender.com/scale/get-mapping",
           {
-            method: "POST",
+            filter: {
+              COUNTRY: "IN",
+              SUBSCRIPTION: "FREE",
+            },
+            projectID,
+          },
+          {
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({
-              filter: {
-                COUNTRY: "IN",
-                SUBSCRIPTION: "FREE",
-              },
-              projectID,
-            }),
           }
         );
 
-        const data = await response.json();
-        console.log("data", data);
+        const data = response.data;
 
         if (data.code === "FOUND") {
           setAppConfig(data.mappings.appConfig);
@@ -42,6 +44,8 @@ const useFetchConfig = () => {
           setAppConfig(fallbackData.mappings.appConfig);
           setStale(true);
         }
+
+        console.log(data);
       } catch (error) {
         console.error("Error fetching live config:", error.response);
       }
@@ -50,7 +54,7 @@ const useFetchConfig = () => {
     fetchConfig();
   }, []);
 
-  return {appConfig, stale};
+  return { appConfig, stale };
 };
 
 export default useFetchConfig;

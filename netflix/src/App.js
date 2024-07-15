@@ -48,7 +48,7 @@ const App = () => {
     <div className="page">
     {stale && (
         <div className="stale">
-            <p>No Mapping Found (Rendering Default Site)</p>
+            <p>No Mapping / Project Found (Rendering Default Site)</p>
         </div>
     )}
     
