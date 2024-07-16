@@ -6,45 +6,17 @@ import { PRODUCTS } from './products';
 import { PRODUCTS1 } from './products';
 import ReactStars from "react-rating-stars-component";
 import React, { useState, useEffect } from 'react';
+import useStore from "../store";
 
 
 const newarrivals = () => {
-  const [appConfig, setAppConfig] = useState(null);
-
-  useEffect(() => {
-    const fetchConfig = async () => {
-      try {
-        const response = await fetch("https://facottry-server.onrender.com/scale/get-mapping", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            filter: {
-              COUNTRY: "US",
-              SUBSCRIPTION: "FREE",
-            },
-            projectID: "vishal_72d8f604-cb87-4358-8dc8-1d53a96670c9",
-          }),
-        });
-
-        const data = await response.json();
-        if (data.code === "FOUND") {
-          setAppConfig(data.mappings.appConfig);
-        }
-      } catch (error) {
-        console.error("Error fetching config:", error);
-      }
-    };
-
-    fetchConfig();
-  }, []);
+  const { appConfig } = useStore();
 
   if (!appConfig) {
     return <div>Loading...</div>;
   }
   return <>
-    {appConfig.newarrival && (
+    {appConfig.newarrivalConfig.newarrival && (
     <div  className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 p-3">
       {PRODUCTS1.slice(1, 5).map((product, index) => (
         <div key={index} className="col mb-5">

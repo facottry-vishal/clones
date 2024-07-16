@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import Layout from "./components/layout";
 import Home from "./pages/home";
@@ -15,7 +14,7 @@ import Blog from "./pages/blog";
 import "./App.css";
 import ShopContext from "./components/shopcontext";
 import Details from "./pages/details";
-import useFetchConfig from "./useFetch"
+import useStore from "./store";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -28,7 +27,11 @@ function ScrollToTop() {
 }
 
 function App() {
-  const { appConfig, playerConfig, stale } = useFetchConfig();
+  const { appConfig, playerConfig, stale, fetchConfig } = useStore();
+
+  useEffect(() => {
+    fetchConfig();
+  }, [fetchConfig]);
 
   return (
     <>

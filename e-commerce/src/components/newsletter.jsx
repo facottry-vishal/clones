@@ -1,38 +1,11 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import useStore from "../store";
 
 const Newsletter = () => {
-  const [appConfig, setAppConfig] = useState(null);
+  const { appConfig } = useStore();
 
-  useEffect(() => {
-    const fetchConfig = async () => {
-      try {
-        const response = await fetch("https://facottry-server.onrender.com/scale/get-mapping", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            filter: {
-              COUNTRY: "US",
-              SUBSCRIPTION: "FREE",
-            },
-            projectID: "vishal_72d8f604-cb87-4358-8dc8-1d53a96670c9",
-          }),
-        });
-
-        const data = await response.json();
-        if (data.code === "FOUND") {
-          setAppConfig(data.mappings.appConfig);
-        }
-      } catch (error) {
-        console.error("Error fetching config:", error);
-      }
-    };
-
-    fetchConfig();
-  }, []);
 
   if (!appConfig) {
     return <div>Loading...</div>;
@@ -40,7 +13,7 @@ const Newsletter = () => {
 
   return (
     <>
-      {appConfig.newsletter && (
+      {appConfig.newsletterConfig.newsletter && (
         <section className="newsletter p-5">
           <div className="container-xxl">
             <div className="row g-3">
