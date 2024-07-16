@@ -1115,3 +1115,18 @@ flex: 1 1 auto;
 padding: 24px 1rem !important;
 
 }
+
+.stale {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #d07070;
+  color: #a6a3a3;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  text-align: center;
+  font-weight: bold;
+}
