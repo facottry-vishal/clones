@@ -130,7 +130,7 @@ const Header = () => {
                 <button className="cart-span fs-3 d-md-none">
                   <Link to='/cart' className={location.pathname === '/cart' ? 'active' : ''}>
                     <CgShoppingCart />
-                    <b><span>{totalProducts}</span></b>
+                    <b><span>{totalProducts} </span></b>
                   </Link>
                 </button>
               )}
