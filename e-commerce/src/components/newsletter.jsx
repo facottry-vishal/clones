@@ -7,7 +7,7 @@ const Newsletter = () => {
   const { appConfig } = useStore();
 
 
-  if (!appConfig.newsletterConfig) {
+  if (!appConfig?.newsletterConfig) {
     return(
      <div>loading newsletter Config</div>
     );

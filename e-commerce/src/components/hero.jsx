@@ -10,7 +10,7 @@ import useStore from "../store";
 const hero = () => {
   const { appConfig } = useStore();
 
-  if (!appConfig.heroConfig) {
+  if (!appConfig?.heroConfig) {
     return (
       <div>Loading Hero Config</div>
     );

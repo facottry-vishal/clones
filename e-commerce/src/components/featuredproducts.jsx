@@ -6,9 +6,11 @@ import useStore from "../store";
 const FeaturedProducts = () => {
   const { appConfig } = useStore();
 
-  useEffect(() => {
-    fetchConfig();
-  }, [fetchConfig]);
+  if (!appConfig?.featuredproductConfig) {
+    return (
+      <div>Loading FeaturedProduct Config</div>
+    );
+  }
 
   return (
     <>

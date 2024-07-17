@@ -28,9 +28,13 @@ const Header = () => {
   const { appConfig } = useStore();
 
   // Render loading state if appConfig is not yet loaded
-  if (!appConfig) {
-    return <div>Loading...</div>;
+
+  if (!appConfig?.headerConfig) {
+    return (
+      <div>Loading Header Config</div>
+    );
   }
+
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);

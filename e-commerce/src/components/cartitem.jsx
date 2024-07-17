@@ -10,7 +10,11 @@ const cartitem = (props) => {
     const { addToCart, cartItems, removeToCart, updateCartItemCount, itemPrice} = useContext(ShopContext);
     const itemsInStock = id === 0 ? Math.ceil((id + 2.5) * 102 / 2) : Math.ceil((id * 102.5) / 2);
     const { appConfig } = useStore();
-   
+    if (!appConfig?.cartitemConfig) {
+      return (
+        <div>Loading cartitem Config</div>
+      );
+    }
   return <>
 
 
