@@ -28,11 +28,7 @@ const Header = () => {
   const { appConfig } = useStore();
 
 
-  if (!appConfig.headerConfig) {
-    return(
-     <div>loading header Config</div>
-    );
-  }
+ 
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);

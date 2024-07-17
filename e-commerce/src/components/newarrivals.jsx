@@ -12,11 +12,6 @@ import useStore from "../store";
 const newarrivals = () => {
   const { appConfig } = useStore();
 
-  if (!appConfig.newarrivalConfig) {
-    return(
-     <div>loading newarrivalConfig</div>
-    );
-  }
 
   return <>
     {appConfig.newarrivalConfig.newarrival && (
