@@ -16,7 +16,6 @@ import user from "../assets/images/user.svg";
 import logo from '../assets/images/apneck.png';
 import { MdOutlineToggleOff, MdOutlineToggleOn } from "react-icons/md";
 import useStore from "../store";
-import fallbackdata from "../fallback_data.json"
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
