@@ -12,6 +12,12 @@ import useStore from "../store";
 const featuredproducts = () => {
   const { appConfig } = useStore();
 
+  if (!appConfig.featuredproductConfig) {
+    return(
+     <div>loading featuredproduct Config</div>
+    );
+  }
+
   return <>
   {appConfig.featuredproductConfig.featuredproduct && (
      <div  className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 p-3">

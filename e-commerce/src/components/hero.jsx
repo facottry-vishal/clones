@@ -9,6 +9,12 @@ import useStore from "../store";
 
 const hero = () => {
   const { appConfig } = useStore();
+  if (!appConfig.heroConfig) {
+    return(
+     <div>loading hero Config</div>
+    );
+  }
+
 
   return <>
     <section className="hero p-4">

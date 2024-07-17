@@ -7,8 +7,10 @@ const Newsletter = () => {
   const { appConfig } = useStore();
 
 
-  if (!appConfig) {
-    return <div>Loading...</div>;
+  if (!appConfig.newsletterConfig) {
+    return(
+     <div>loading newsletter Config</div>
+    );
   }
 
   return (

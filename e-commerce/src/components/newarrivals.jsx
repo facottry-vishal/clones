@@ -12,9 +12,12 @@ import useStore from "../store";
 const newarrivals = () => {
   const { appConfig } = useStore();
 
-  if (!appConfig) {
-    return <div>Loading...</div>;
+  if (!appConfig.newarrivalConfig) {
+    return(
+     <div>loading newarrivalConfig</div>
+    );
   }
+
   return <>
     {appConfig.newarrivalConfig.newarrival && (
     <div  className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 p-3">
