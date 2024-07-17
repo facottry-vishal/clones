@@ -14,7 +14,7 @@ import Blog from "./pages/blog";
 import "./App.css";
 import ShopContext from "./components/shopcontext";
 import Details from "./pages/details";
-import useStore from "./store";
+import useFetchConfig from "./useFetch";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -27,11 +27,7 @@ function ScrollToTop() {
 }
 
 function App() {
-  const { appConfig, playerConfig, stale, fetchConfig } = useStore();
-
-  useEffect(() => {
-    fetchConfig();
-  }, [fetchConfig]);
+  const { appConfig, playerConfig, stale } = useFetchConfig();
 
   return (
     <>
@@ -46,16 +42,69 @@ function App() {
           <Routes>
             <Route path="/" element={<Layout />}>
               <Route index element={<Home />} />
-              <Route path="shop" element={<Shop appConfig={appConfig} playerConfig={playerConfig} />} />
-              <Route path="blog" element={<Blog appConfig={appConfig} playerConfig={playerConfig} />} />
-              <Route path="about" element={<About appConfig={appConfig} playerConfig={playerConfig} />} />
-              <Route path="contact" element={<Contact appConfig={appConfig} playerConfig={playerConfig} />} />
-              <Route path="login" element={<Login appConfig={appConfig} playerConfig={playerConfig} />} />
-              <Route path="signup" element={<Signup appConfig={appConfig} playerConfig={playerConfig} />} />
-              <Route path="forgotpasword" element={<Forgotpasword appConfig={appConfig} playerConfig={playerConfig} />} />
-              <Route path="cart" element={<Cart appConfig={appConfig} playerConfig={playerConfig} />} />
-              <Route path="checkout" element={<Checkout appConfig={appConfig} playerConfig={playerConfig} />} />
-              <Route path="details" element={<Details appConfig={appConfig} playerConfig={playerConfig} />} />
+              <Route
+                path="shop"
+                element={
+                  <Shop appConfig={appConfig} playerConfig={playerConfig} />
+                }
+              />
+              <Route
+                path="blog"
+                element={
+                  <Blog appConfig={appConfig} playerConfig={playerConfig} />
+                }
+              />
+              <Route
+                path="about"
+                element={
+                  <About appConfig={appConfig} playerConfig={playerConfig} />
+                }
+              />
+              <Route
+                path="contact"
+                element={
+                  <Contact appConfig={appConfig} playerConfig={playerConfig} />
+                }
+              />
+              <Route
+                path="login"
+                element={
+                  <Login appConfig={appConfig} playerConfig={playerConfig} />
+                }
+              />
+              <Route
+                path="signup"
+                element={
+                  <Signup appConfig={appConfig} playerConfig={playerConfig} />
+                }
+              />
+              <Route
+                path="forgotpasword"
+                element={
+                  <Forgotpasword
+                    appConfig={appConfig}
+                    playerConfig={playerConfig}
+                  />
+                }
+              />
+              <Route
+                path="cart"
+                element={
+                  <Cart appConfig={appConfig} playerConfig={playerConfig} />
+                }
+              />
+              <Route
+                path="checkout"
+                element={
+                  <Checkout appConfig={appConfig} playerConfig={playerConfig} />
+                }
+              />
+              <Route
+                path="details"
+                element={
+                  <Details appConfig={appConfig} playerConfig={playerConfig} />
+                }
+              />
             </Route>
           </Routes>
         </BrowserRouter>

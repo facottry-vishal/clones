@@ -1,11 +1,17 @@
 import { useEffect, useState } from "react";
 import fallbackData from "./fallback_data.json";
 import axios from "axios";
+import configStore from "./store";
 
 const useFetchConfig = () => {
-  const [appConfig, setAppConfig] = useState(null);
-  const [playerConfig, setPlayerConfig] = useState(null);
-  const [stale, setStale] = useState(true);
+  const {
+    appConfig,
+    setAppConfig,
+    playerConfig,
+    setPlayerConfig,
+    stale,
+    setStale,
+  } = configStore();
 
   useEffect(() => {
     const fetchConfig = async () => {
@@ -48,7 +54,6 @@ const useFetchConfig = () => {
           setPlayerConfig(fallbackData.mappings.playerConfig);
           setStale(true);
         }
-
       } catch (error) {
         console.error("Error fetching live config:", error.response);
       }
