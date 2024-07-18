@@ -8,13 +8,19 @@ import Play from "./components/Play";
 import useFetchConfig from "./useFetch";
 
 function App() {
-  const { appConfig, playerConfig, stale } = useFetchConfig();
+  const { appConfig, playerConfig, stale, projectID } = useFetchConfig();
 
   return (
     <div className="App">
       {stale && (
         <div className="stale">
           <p>No Mapping / Project Found (Rendering Default Site)</p>
+        </div>
+      )}
+
+      {(projectID || localStorage.getItem("projectID")) && (
+        <div className="projectid">
+          <p>Project ID: {projectID || localStorage.getItem("projectID")}</p>
         </div>
       )}
       <Router>

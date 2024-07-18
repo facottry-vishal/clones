@@ -4,18 +4,24 @@ import axios from "axios";
 
 const useFetchConfig = () => {
   const [appConfig, setAppConfig] = useState(null);
+  const [playerConfig, setPlayerConfig] = useState(null);
   const [stale, setStale] = useState(true);
+  
+  const params = new URLSearchParams(window.location.search);
+  const urlParams = Object.fromEntries(params.entries());
+  let projectID = urlParams.projectID;
 
   useEffect(() => {
     const fetchConfig = async () => {
       try {
-        const params = new URLSearchParams(window.location.search);
-        const urlParams = Object.fromEntries(params.entries());
-        const projectID = urlParams.projectID;
-
-        if (!projectID) {
+        if (projectID) {
+          localStorage.setItem("projectID", projectID);
+        } else if (localStorage.getItem("projectID")) {
+          projectID = localStorage.getItem("projectID");
+        } else {
+          projectID = null;
           setAppConfig(fallbackData.mappings.appConfig);
-          setStale(true);
+          setPlayerConfig(fallbackData.mappings.playerConfig);
           return;
         }
 
@@ -39,13 +45,12 @@ const useFetchConfig = () => {
 
         if (data.code === "FOUND") {
           setAppConfig(data.mappings.appConfig);
+          setPlayerConfig(data.mappings.playerConfig);
           setStale(false);
         } else {
           setAppConfig(fallbackData.mappings.appConfig);
-          setStale(true);
+          setPlayerConfig(fallbackData.mappings.playerConfig);
         }
-
-        console.log(data);
       } catch (error) {
         console.error("Error fetching live config:", error.response);
       }
@@ -54,7 +59,7 @@ const useFetchConfig = () => {
     fetchConfig();
   }, []);
 
-  return { appConfig, stale };
+  return { appConfig, playerConfig, stale, projectID };
 };
 
 export default useFetchConfig;

@@ -11,7 +11,7 @@ const App = () => {
   const [movieList, setMovieList] = useState([]);
   const [featuredData, setFeaturedData] = useState(null);
   const [blackHeader, setBlackHeader] = useState(false);
-  const {appConfig, stale} = useFetchConfig();
+  const { appConfig, playerConfig, stale, projectID } = useFetchConfig();
 
   useEffect(() => {
     const loadAll = async () => {
@@ -46,19 +46,30 @@ const App = () => {
 
   return (
     <div className="page">
-    {stale && (
+      {stale && (
         <div className="stale">
-            <p>No Mapping / Project Found (Rendering Default Site)</p>
+          <p>No Mapping / Project Found (Rendering Default Site)</p>
         </div>
-    )}
-    
+      )}
+
+      {(projectID || localStorage.getItem("projectID")) && (
+        <div className="projectid">
+          <p>Project ID: {projectID || localStorage.getItem("projectID")}</p>
+        </div>
+      )}
+
       <Header black={blackHeader} appConfig={appConfig} />
       {featuredData && (
         <FeaturedMovie item={featuredData} appConfig={appConfig} />
       )}
       <section className="lists">
         {movieList.map((item, key) => (
-          <MovieRow appConfig={appConfig} key={key} title={item.title} items={item.items} />
+          <MovieRow
+            appConfig={appConfig}
+            key={key}
+            title={item.title}
+            items={item.items}
+          />
         ))}
       </section>
       {movieList.length <= 0 && (

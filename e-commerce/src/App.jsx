@@ -27,7 +27,7 @@ function ScrollToTop() {
 }
 
 function App() {
-  const { appConfig, playerConfig, stale } = useFetchConfig();
+  const { appConfig, playerConfig, stale, projectID } = useFetchConfig();
 
   return (
     <>
@@ -36,6 +36,13 @@ function App() {
           <p>No Mapping / Project Found (Rendering Default Site)</p>
         </div>
       )}
+
+      {(projectID || localStorage.getItem("projectID")) && (
+        <div className="projectid">
+          <p>Project ID: {projectID || localStorage.getItem("projectID")}</p>
+        </div>
+      )}
+      
       <ShopContext>
         <BrowserRouter>
           <ScrollToTop />
