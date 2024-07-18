@@ -4,8 +4,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import React, { useState, useEffect } from "react";
 
-
-const ImgSlider = (props) => {
+const ImgSlider = ({ appConfig }) => {
   let settings = {
     dots: true,
     infinite: true,
@@ -15,45 +14,6 @@ const ImgSlider = (props) => {
     autoplay: true,
   };
 
-  const [appConfig, setAppConfig] = useState(null); // State to hold configuration data
-
-  // Fetch configuration from API on component mount
-  useEffect(() => {
-   const fetchConfig = async () => {
-     try {
-       const response = await fetch("https://facottry-server.onrender.com/scale/get-mapping", {
-         method: "POST",
-         headers: {
-           "Content-Type": "application/json",
-         },
-         body: JSON.stringify({
-           filter: {
-             COUNTRY: "IN",
-             SUBSCRIPTION: "PAID",
-           },
-           projectID: "vishal_72d8f604-cb87-4358-8dc8-1d53a96670c9",
-         }),
-       });
-
-       const data = await response.json();
-       if (data.code === "FOUND") {
-         setAppConfig(data.mappings.appConfig); // Set appConfig state with API response
-       }
-     } catch (error) {
-       console.error("Error fetching config:", error);
-     }
-   };
-
-   fetchConfig();
- }, []);
-  // Toggle feature flag
-  const toggleFeature = (key) => {
-    setAppConfig((prevConfig) => ({
-      ...prevConfig,
-      [key]: !prevConfig[key],
-    }));
-  };
-  
   // Render loading state if appConfig is not yet loaded
   if (!appConfig) {
     return <div>Loading...</div>;

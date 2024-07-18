@@ -1,51 +1,11 @@
 import styled from "styled-components";
 import React, { useState, useEffect } from "react";
 
-const Viewers = (props) => {
-  const [appConfig, setAppConfig] = useState(null); // State to hold configuration data
-
-   // Fetch configuration from API on component mount
-   useEffect(() => {
-    const fetchConfig = async () => {
-      try {
-        const response = await fetch("https://facottry-server.onrender.com/scale/get-mapping", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            filter: {
-              COUNTRY: "IN",
-              SUBSCRIPTION: "PAID",
-            },
-            projectID: "vishal_72d8f604-cb87-4358-8dc8-1d53a96670c9",
-          }),
-        });
-
-        const data = await response.json();
-        if (data.code === "FOUND") {
-          setAppConfig(data.mappings.appConfig); // Set appConfig state with API response
-        }
-      } catch (error) {
-        console.error("Error fetching config:", error);
-      }
-    };
-
-    fetchConfig();
-  }, []);
-
- // Toggle feature flag
- const toggleFeature = (key) => {
-  setAppConfig((prevConfig) => ({
-    ...prevConfig,
-    [key]: !prevConfig[key],
-  }));
-};
-
-// Render loading state if appConfig is not yet loaded
-if (!appConfig) {
-  return <div>Loading...</div>;
-}
+const Viewers = ({ appConfig }) => {
+  // Render loading state if appConfig is not yet loaded
+  if (!appConfig) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <Container>
@@ -83,10 +43,7 @@ if (!appConfig) {
       )}
       {appConfig.videonational && (
         <Wrap>
-          <img
-            src="/images/viewers-national.png"
-            alt="National Geographic"
-          />
+          <img src="/images/viewers-national.png" alt="National Geographic" />
           <video autoPlay loop playsInline>
             <source
               src="/videos/1564676296-national-geographic.mp4"
@@ -98,8 +55,6 @@ if (!appConfig) {
     </Container>
   );
 };
-
-
 
 const Container = styled.div`
   margin-top: 30px;
