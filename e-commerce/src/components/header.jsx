@@ -15,6 +15,7 @@ import wishlist from "../assets/images/wishlist.svg";
 import user from "../assets/images/user.svg";
 import logo from '../assets/images/apneck.png';
 import { MdOutlineToggleOff, MdOutlineToggleOn } from "react-icons/md";
+import useStore from "../store";
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -24,50 +25,16 @@ const Header = () => {
   const location = useLocation();
   const [mode, setMode] = useState(false);
   const [full, setFull] = useState(false);
-  const [appConfig, setAppConfig] = useState(null); // State to hold configuration data
-
-  // Fetch configuration from API on component mount
-  useEffect(() => {
-    const fetchConfig = async () => {
-      try {
-        const response = await fetch("https://facottry-server.onrender.com/scale/get-mapping", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            filter: {
-              COUNTRY: "US",
-              SUBSCRIPTION: "FREE",
-            },
-            projectID: "vishal_72d8f604-cb87-4358-8dc8-1d53a96670c9",
-          }),
-        });
-
-        const data = await response.json();
-        if (data.code === "FOUND") {
-          setAppConfig(data.mappings.appConfig); // Set appConfig state with API response
-        }
-      } catch (error) {
-        console.error("Error fetching config:", error);
-      }
-    };
-
-    fetchConfig();
-  }, []);
-
-  // Toggle feature flag
-  const toggleFeature = (key) => {
-    setAppConfig((prevConfig) => ({
-      ...prevConfig,
-      [key]: !prevConfig[key],
-    }));
-  };
+  const { appConfig } = useStore();
 
   // Render loading state if appConfig is not yet loaded
-  if (!appConfig) {
-    return <div>Loading...</div>;
+
+  if (!appConfig?.headerConfig) {
+    return (
+      <div>Loading Header Config</div>
+    );
   }
+
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
@@ -80,20 +47,20 @@ const Header = () => {
           <div className="row">
             <div className="d-flex align-items-center justify-content-between d-none d-md-flex">
               <div className="col-md-8 me-auto">
-                {appConfig.heading1 && (
+                {appConfig.headerConfig.heading1 && (
                   <p className='text-black'>The trending outfits at 100% off</p>
                 )}
               </div>
               <div className="col-md-2">
-                {appConfig.telephone && (
+                {appConfig.headerConfig.telephone && (
                   <a href="tel:+">Call us at +1 (234) 567-890</a>
                 )}
               </div>
               <div className="col-md">
-                {appConfig.email && (
+                {appConfig.headerConfig.email && (
                   <Link className='links fs-4'><CiMail /></Link>
                 )}
-                {appConfig.call && (
+                {appConfig.headerConfig.call && (
                   <Link className='links fs-4'><BiPhoneCall /></Link>
                 )}
               </div>
@@ -122,19 +89,19 @@ const Header = () => {
                 <span className="navbar-toggler-icon">{showMenu ? <AiOutlineClose /> : <AiOutlineMenu />}</span>
               </button>
               <Link to='/'>
-                {appConfig.logo && (
+                {appConfig.headerConfig.logo && (
                   <img src={logo} alt="logo" className='img-fluid logo' />
                 )}
               </Link>
-              {appConfig.cart && (
+              {appConfig.headerConfig.cart && (
                 <button className="cart-span fs-3 d-md-none">
                   <Link to='/cart' className={location.pathname === '/cart' ? 'active' : ''}>
                     <CgShoppingCart />
-                    <b><span>{totalProducts}</span></b>
+                    <b><span>{totalProducts} </span></b>
                   </Link>
                 </button>
               )}
-              {appConfig.login && (
+              {appConfig.headerConfig.login && (
                 <button className='cart-span-2 fs-3 d-md-none'>
                   <Link to='/login' className={location.pathname === '/login' ? 'active' : ''}>
                     <VscAccount />
@@ -144,7 +111,7 @@ const Header = () => {
             </div>
             <div className="col-md-10 row col-lg-10">
               <div className="col-md-3 m-auto">
-                {appConfig.search && (
+                {appConfig.headerConfig.search && (
                   <div className="input-group d-none d-md-flex">
                     <input type="text" className="form-control" placeholder="Find products ..." aria-label="Find products ..." aria-describedby="basic-addon2" />
                     <button className="input-group-text" id="basic-addon2">search</button>
@@ -153,27 +120,27 @@ const Header = () => {
               </div>
               <div className="col-md-6 m-auto">
                 <div className='menu-links mt-2 d-none d-md-flex d-lg-flex'>
-                  {appConfig.home && (
+                  {appConfig.headerConfig.home && (
                     <div className='ms-auto gap-3'>
                       <NavLink to="/" className={location.pathname === '/' ? 'active' : ''} onClick={toggleMenu}>HOME</NavLink>
                     </div>
                   )}
-                  {appConfig.shop && (
+                  {appConfig.headerConfig.shop && (
                     <div className='ms-auto gap-3'>
                       <NavLink to="/shop" className={location.pathname === '/shop' ? 'active' : ''} onClick={toggleMenu}>SHOP</NavLink>
                     </div>
                   )}
-                  {appConfig.blog && (
+                  {appConfig.headerConfig.blog && (
                     <div className='ms-auto gap-3'>
                       <NavLink to="/blog" className={location.pathname === '/blog' ? 'active' : ''} onClick={toggleMenu}>BLOG</NavLink>
                     </div>
                   )}
-                  {appConfig.about && (
+                  {appConfig.headerConfig.about && (
                     <div className='ms-auto gap-3'>
                       <NavLink to="/about" className={location.pathname === '/about' ? 'active' : ''} onClick={toggleMenu}>ABOUT</NavLink>
                     </div>
                   )}
-                  {appConfig.contact && (
+                  {appConfig.headerConfig.contact && (
                     <div className='ms-auto gap-3'>
                       <NavLink to="/contact" className={location.pathname === '/contact' ? 'active' : ''} onClick={toggleMenu}>CONTACT</NavLink>
                     </div>
@@ -183,21 +150,21 @@ const Header = () => {
               <div className="col-md-3">
                 <div className="row d-flex justify-content-center">
                   <div className="col-12 col-md-2 d-none d-md-flex d-lg-flex m-auto">
-                    {appConfig.carticon && (
+                    {appConfig.headerConfig.carticon && (
                       <div className={location.pathname === '/' ? 'active' : ''}>
                         <Link to="/" onClick={toggleMenu} className="d-flex align-items-center color-nav me-3">
                           <CgProductHunt className='me-1 fs-2' />
                         </Link>
                       </div>
                     )}
-                    {appConfig.loginicon && (
+                    {appConfig.headerConfig.loginicon && (
                       <div className={location.pathname === '/login' ? 'active' : ''}>
                         <Link to="/login" onClick={toggleMenu} className="d-flex align-items-center color-nav me-3">
                           <VscAccount className='me-1 fs-2' />
                         </Link>
                       </div>
                     )}
-                    {appConfig.tollyicon && (
+                    {appConfig.headerConfig.tollyicon && (
                       <div className={location.pathname === '/cart' ? 'active' : ''}>
                         <Link to="/cart" onClick={toggleMenu} className="d-flex align-items-center color-nav me-3 cart-span-one">
                           <CgShoppingCart className='me-1 fs-2' />
