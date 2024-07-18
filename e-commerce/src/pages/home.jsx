@@ -11,46 +11,19 @@ import blog3 from '../assets/images/blog/blog-3.jpg';
 import blog4 from '../assets/images/blog/blog-4.jpg';
 import Newsletter from '../components/newsletter';
 import Hero from '../components/hero';
+import useStore from "../store";
 
 const Home = () => {
-  const [appConfig, setAppConfig] = useState(null);
+  const { appConfig } = useStore();
+  const homeConfig = appConfig?.homeConfig;
 
-  useEffect(() => {
-    const fetchConfig = async () => {
-      try {
-        const response = await fetch("https://facottry-server.onrender.com/scale/get-mapping", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            filter: {
-              COUNTRY: "US",
-              SUBSCRIPTION: "FREE",
-            },
-            projectID: "vishal_72d8f604-cb87-4358-8dc8-1d53a96670c9",
-          }),
-        });
-
-        const data = await response.json();
-        if (data.code === "FOUND") {
-          setAppConfig(data.mappings.appConfig);
-        }
-      } catch (error) {
-        console.error("Error fetching config:", error);
-      }
-    };
-
-    fetchConfig();
-  }, []);
-
-  if (!appConfig) {
+  if (!homeConfig) {
     return <div>Loading...</div>;
   }
 
   return (
     <>
-      {appConfig.banner1 && (
+      {homeConfig.homeconfig1 && (
         <section className="banner">
           <div className="container-xxl">
             <div className="row">
@@ -76,7 +49,7 @@ const Home = () => {
 
       <Hero />
 
-      {appConfig.banner2 && (
+      {homeConfig.homeconfig2 && (
         <section className="featured-products p-4">
           <div className="container-xxl">
             <div className="row">
@@ -90,7 +63,7 @@ const Home = () => {
         </section>
       )}
 
-      {appConfig.banner3 && (
+      {homeConfig.homeconfig3 && (
         <section className="repair-services p-5">
           <div className="container-xxl">
             <div className="row ">
@@ -104,7 +77,7 @@ const Home = () => {
         </section>
       )}
 
-      {appConfig.banner4 && (
+      {homeConfig.homeconfig4 && (
         <section className="new-arrivals p-4">
           <div className="container-xxl">
             <div className="row">
@@ -118,7 +91,7 @@ const Home = () => {
         </section>
       )}
 
-      {appConfig.banner5 && (
+      {homeConfig.homeconfig5 && (
         <section className="hot-deals p-5 d-flex flex-column flex-md-row justify-content-center align-items-center align-items-md-start">
           <div className="container-xxl">
             <div className="row">
@@ -166,7 +139,7 @@ const Home = () => {
         </section>
       )}
 
-      {appConfig.appConfig6 && (
+      {homeConfig.homeconfig6 && (
         <section className="blogs p-5">
           <div className="container-xxl">
             <div className="row">

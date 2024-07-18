@@ -1,85 +1,87 @@
 {
-    "code": "FOUND",
-    "message": "Success",
-    "mappings": {
-      "appConfig": {
-        "headerConfig": {
-          "heading1": true,
-          "telephone": true,
-          "call": true,
-          "email": true,
-          "logo": true,
-          "cart": true,
-          "login": true,
-          "search": true,
-          "home": true,
-          "shop": true,
-          "blog": true,
-          "about": true,
-          "contact": true,
-          "carticon": true,
-          "loginicon": true,
-          "tollyicon": true
-        },
-        "heroConfig": {
-          "fasticon": true,
-          "supporticon": true,
-          "highicon": true,
-          "quickicon": true
-        },
-        "cartitemConfig": {
-          "cartimage": true,
-          "cartname": true,
-          "cartbrand": true,
-          "cartprice": true,
-          "cartquantity": true,
-          "cartstock": true,
-          "count": true,
-          "cartremove": true,
-          "coupancode": true
-        },
-        "shopConfig": {
-          "shopdetails": true,
-          "shopproduct": true,
-          "shopnumber": true
-        },
-        "blogConfig": {
-          "blog1": true,
-          "blog2": true
-        },
-        "featuredproductConfig": {
-          "featuredproduct": true
-        },
-        "newarrivalConfig": {
-          "newarrival": true
-        },
-  
-        "newsletterConfig": {
-          "newsletter": true
-        },
-        "contactConfig": {
-          "contacthading1": true
-        },
-        "homeConfig": {
-          "homeconfig1": true,
-          "homeconfig2": true,
-          "homeconfig3": true,
-          "homeconfig4": true,
-          "homeconfig5": true,
-          "homeconfig6": true
-        },
-        "loginConfig": {
-          "login": true
-        }
+  "code": "FOUND",
+  "message": "Success",
+  "mappings": {
+    "appConfig": {
+      "headerConfig": {
+        "heading1": true,
+        "telephone": true,
+        "call": true,
+        "email": true,
+        "logo": true,
+        "cart": true,
+        "login": true,
+        "search": true,
+        "home": true,
+        "shop": true,
+        "blog": true,
+        "about": true,
+        "contact": true,
+        "carticon": true,
+        "loginicon": true,
+        "tollyicon": true
       },
-  
-      "playerConfig": {},
-      "filter": {
-        "COUNTRY": "IN",
-        "SUBSCRIPTION": "FREE"
+      "heroConfig": {
+        "fasticon": true,
+        "supporticon": true,
+        "highicon": true,
+        "quickicon": true
       },
-      "projectID": "vishal_72d8f604-cb87-4358-8dc8-1d53a96670c9",
-      "companyID": "vishal_c22f3172-1e83-47e8-97fc-f921eca1ed73"
-    }
+      "checkoutConfig": {
+        "checkout": true
+      },
+      "cartitemConfig": {
+        "cartimage": true,
+        "cartname": true,
+        "cartbrand": true,
+        "cartprice": true,
+        "cartquantity": true,
+        "cartstock": true,
+        "count": true,
+        "cartremove": true,
+        "coupancode": true
+      },
+      "shopConfig": {
+        "shopdetails": true,
+        "shopproduct": true,
+        "shopnumber": true
+      },
+      "blogConfig": {
+        "blog1": true,
+        "blog2": true
+      },
+      "featuredproductConfig": {
+        "featuredproduct": true
+      },
+      "newarrivalConfig": {
+        "newarrival": true
+      },
+
+      "newsletterConfig": {
+        "newsletter": true
+      },
+      "contactConfig": {
+        "contacthading1": true
+      },
+      "homeConfig": {
+        "homeconfig1": true,
+        "homeconfig2": true,
+        "homeconfig3": true,
+        "homeconfig4": true,
+        "homeconfig5": true,
+        "homeconfig6": true
+      },
+      "loginConfig": {
+        "login": true
+      }
+    },
+
+    "playerConfig": {},
+    "filter": {
+      "COUNTRY": "IN",
+      "SUBSCRIPTION": "FREE"
+    },
+    "projectID": "vishal_72d8f604-cb87-4358-8dc8-1d53a96670c9",
+    "companyID": "vishal_c22f3172-1e83-47e8-97fc-f921eca1ed73"
   }
-  
+}
