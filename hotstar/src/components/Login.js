@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import useStore from "../store";
 
-const Login = ({ appConfig }) => {
+const Login = () => {
+  const { appConfig } = useStore();
+
   // Render loading state if appConfig is not yet loaded
   if (!appConfig) {
     return <div>Loading...</div>;

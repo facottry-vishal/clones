@@ -10,14 +10,16 @@ import { useDispatch, useSelector } from "react-redux";
 import db from "../firebase";
 import { setMovies } from "../features/movie/movieSlice";
 import { selectUserName } from "../features/user/userSlice";
+import useStore from "../store";
 
-const Home = ({ appConfig }) => {
+const Home = () => {
   const dispatch = useDispatch();
   const userName = useSelector(selectUserName);
   let recommends = [];
   let newDisneys = [];
   let originals = [];
   let trending = [];
+  const { appConfig } = useStore();
 
   useEffect(() => {
     // console.log("hello");

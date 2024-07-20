@@ -2,27 +2,14 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import styled from "styled-components";
 import db from "../firebase";
+import useStore from "../store";
 
-const Detail = ({ appConfig }) => {
+const Detail = () => {
   const { id } = useParams();
   const [detailData, setDetailData] = useState({});
+  const { appConfig } = useStore();
 
-  useEffect(() => {
-    const fetchDetailData = async () => {
-      try {
-        const doc = await db.collection("movies").doc(id).get();
-        if (doc.exists) {
-          setDetailData(doc.data());
-        } else {
-          console.log("No such document in firebase ");
-        }
-      } catch (error) {
-        console.log("Error getting document:", error);
-      }
-    };
-
-    fetchDetailData();
-  }, [id]);
+ 
 
   if (!appConfig) {
     return <div>Loading...</div>;

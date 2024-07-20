@@ -10,13 +10,14 @@ import {
   setSignOutState,
 } from "../features/user/userSlice";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import useStore from "../store";
 
-
-const Header = ({ appConfig }) => {
+const Header = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const userName = useSelector(selectUserName);
   const userPhoto = useSelector(selectUserPhoto);
+  const { appConfig } = useStore();
 
   // Handle authentication state changes
   useEffect(() => {
@@ -70,7 +71,7 @@ const Header = ({ appConfig }) => {
   return (
     <Nav>
       <Logo>
-        {appConfig.Disney && <img src="/images/logo.svg" alt="Disney+" />}
+        {appConfig.Header.headermainlogo && <img src="/images/logo.svg" alt="Disney+" />}
       </Logo>
 
       {!userName ? (
@@ -86,37 +87,37 @@ const Header = ({ appConfig }) => {
       ) : (
         <>
           <NavMenu>
-            {appConfig.home && (
+            {appConfig.NavbarButton.Homebutton && (
               <a href="/home">
                 <img src="/images/home-icon.svg" alt="HOME" />
                 <span>HOME</span>
               </a>
             )}
-            {appConfig.search && (
+            {appConfig.NavbarButton.Searchbutton && (
               <a href="/search">
                 <img src="/images/search-icon.svg" alt="SEARCH" />
                 <span>SEARCH</span>
               </a>
             )}
-            {appConfig.watchlist && (
+            {appConfig.NavbarButton.Watchlistbutton && (
               <a href="/watchlist">
                 <img src="/images/watchlist-icon.svg" alt="WATCHLIST" />
                 <span>WATCHLIST</span>
               </a>
             )}
-            {appConfig.originals && (
+            {appConfig.NavbarButton.Originalbutton && (
               <a href="/originals">
                 <img src="/images/original-icon.svg" alt="ORIGINALS" />
                 <span>ORIGINALS</span>
               </a>
             )}
-            {appConfig.movies && (
+            {appConfig.NavbarButton.Moviesbutton && (
               <a href="/movies">
                 <img src="/images/movie-icon.svg" alt="MOVIES" />
                 <span>MOVIES</span>
               </a>
             )}
-            {appConfig.series && (
+            {appConfig.NavbarButton.Seriesbutton && (
               <a href="/series">
                 <img src="/images/series-icon.svg" alt="SERIES" />
                 <span>SERIES</span>

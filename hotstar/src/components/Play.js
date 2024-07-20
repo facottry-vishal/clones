@@ -3,8 +3,11 @@
 import React from "react";
 import ReactPlayer from "react-player";
 import { useState, useEffect } from "react";
+import useStore from "../store";
 
-const Play = ({ playerConfig }) => {
+const Play = () => {
+  const { playerConfig } = useStore();
+
   // Render loading state if appConfig is not yet loaded
   if (!playerConfig) {
     return <div>Loading...</div>;

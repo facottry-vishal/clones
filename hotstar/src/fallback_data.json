@@ -3,44 +3,20 @@
     "message": "Success",
     "mappings": {
         "appConfig": {
-            "home": true,
-            "search": true,
-            "userName": true,
-            "Signout": true,
-            "series": true,
-            "movies": true,
-            "originals": true,
-            "watchlist": true,
-            "Login": true,
-            "Disney": true,
-            "imgone": true,
-            "imgtwo": true,
-            "imgthree": true,
-            "imgfour": true,
-            "videodisney": true,
-            "videopixer": true,
-            "videomarvel": true,
-            "videostarwars": true,
-            "videonational": true,
-            "recommended": true,
-            "movierecommended": true,
-            "newtodisney": true,
-            "newmovies": true,
-            "originalheading": true,
-            "originalmovies": true,
-            "trendingheading": true,
-            "trendingmovies": true,
-            "detailimage": true,
-            "detailtitle": true,
-            "player": true,
-            "trailer": true,
-            "groupimage": true,
-            "subtitle": true,
-            "description": true,
-            "loginimages": true,
-            "singaleline": true,
-            "descriptionline": true,
-            "images": true
+        "Header": {
+              "headermainlogo":true
+        },
+        "NavbarButton":{
+           "Homebutton": true,
+           "Searchbutton" : true,
+           "Watchlistbutton" : true,
+           "Originalbutton": true,
+           "Moviesbutton" : true,
+           "Seriesbutton" :true
+        },
+        "SilderbarImages":{
+            "Heroimages": true
+}
         },
         "playerConfig": {
             "playvideo": false,
