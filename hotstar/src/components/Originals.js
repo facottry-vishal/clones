@@ -17,11 +17,15 @@ const Originals = (props) => {
   }
 
   return (
+    <>
+    
+    {appConfig.movieSection.originalMovieSection&&(
+
     <Container>
-  {appConfig.originalheading && (
+  
       <h4>Originals</h4>
-  )}
-        {appConfig.originalmovies && (
+ 
+       
       <Content>
 
         {movies &&
@@ -34,8 +38,9 @@ const Originals = (props) => {
             </Wrap>
           ))}
       </Content>
-      )}
     </Container>
+    )}
+    </>
   );
 };
 

@@ -24,7 +24,7 @@ const ImgSlider = () => {
 
   return (
    <>
-    {appConfig.SilderbarImages.Heroimages &&(
+    {appConfig.silderbarImages.heroImages &&(
       <Carousel {...settings}>
         
       <Wrap>

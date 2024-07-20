@@ -18,13 +18,14 @@ const NewDisney = () => {
     return <div>Loading...</div>;
   }
   return (
+    <>
+          
+     {appConfig.movieSection.newDisneyMovieSection&&(
+
     <Container>
-        {appConfig.newtodisney && (
+
       <h4>New to Disney+</h4>
-        )}
-        {appConfig.newmovies && (
       <Content>
-        
         {movies &&
           movies.map((movie, key) => (
             <Wrap key={key}>
@@ -35,8 +36,14 @@ const NewDisney = () => {
             </Wrap>
           ))}
       </Content>
-        )}
+        
     </Container>
+        
+     )}
+    
+    </>
+    
+        
   );
 };
 

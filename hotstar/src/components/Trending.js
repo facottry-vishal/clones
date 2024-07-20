@@ -16,11 +16,11 @@ const Trending = (props) => {
     return <div>Loading...</div>;
   } 
   return (
+    <>
+        {appConfig.movieSection.trendingMovieSection &&(
+
     <Container>
-       {appConfig.trendingheading && (
       <h4>Trending</h4>
-       )}
-        {appConfig.trendingmovies && (
       <Content>
         {movies &&
           movies.map((movie, key) => (
@@ -32,8 +32,9 @@ const Trending = (props) => {
             </Wrap>
           ))}
       </Content>
-        )}
     </Container>
+        )}
+    </>
   );
 };
 

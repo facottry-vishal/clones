@@ -19,11 +19,12 @@ const Recommends = (props) => {
   // console.log(movies, ":🛢️");
 
   return (
+   <>
+    {appConfig.movieSection.recommendsForYouMovieSection &&(
     <Container>
-      {appConfig.recommended && (
+      
         <h4>Recommended for You</h4>
-      )}
-      {appConfig.movierecommended && (
+    
         <Content>
           {movies &&
             movies.map((movie, key) => (
@@ -34,9 +35,13 @@ const Recommends = (props) => {
                 </Link>
               </Wrap>
             ))}
+            
         </Content>
-      )}
+      
     </Container>
+  )}  
+    </>
+   
   );
 };
 const Container = styled.div`

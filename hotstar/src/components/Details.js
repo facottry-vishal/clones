@@ -9,25 +9,44 @@ const Detail = () => {
   const [detailData, setDetailData] = useState({});
   const { appConfig } = useStore();
 
- 
+  useEffect(() => {
+    const fetchDetailData = async () => {
+      try {
+        const doc = await db.collection("movies").doc(id).get();
+        if (doc.exists) {
+          setDetailData(doc.data());
+        } else {
+          console.log("No such document in firebase 🔥");
+        }
+      } catch (error) {
+        console.log("Error getting document:", error);
+      }
+    };
+
+    fetchDetailData();
+  }, [id]);
+
 
   if (!appConfig) {
     return <div>Loading...</div>;
   }
 
   return (
+    <>
     <Container>
+    {appConfig.movieDetailSection.detailPageBackGroundimage &&(
       <Background>
-        {appConfig.detailimage && <img alt={detailData.title} src={detailData.backgroundImg} />}
+       <img alt={detailData.title} src={detailData.backgroundImg} />
       </Background>
-
+    )}
+        {appConfig.movieDetailSection.detailPageTitle&&(
       <ImageTitle>
-        {appConfig.detailtitle && <img alt={detailData.title} src={detailData.titleImg} />}
+      <img alt={detailData.title} src={detailData.titleImg} /> 
       </ImageTitle>
-
+       )}
       <ContentMeta>
         <Controls>
-          {appConfig.player && (
+          {appConfig.movieDetailSection.detailPagePlayButton && (
             <Link to="/Play">
               <Player>
                 <img src="/images/play-icon-black.png" alt="" />
@@ -35,7 +54,7 @@ const Detail = () => {
               </Player>
             </Link>
           )}
-          {appConfig.trailer && (
+          {appConfig.movieDetailSection.detailPageTrailerButton && (
             <Trailer>
               <img src="/images/play-icon-white.png" alt="" />
               <span>Trailer</span>
@@ -45,18 +64,22 @@ const Detail = () => {
             <span />
             <span />
           </AddList>
-          {appConfig.groupimage && (
             <GroupWatch>
               <div>
                 <img src="/images/group-icon.png" alt="" />
               </div>
             </GroupWatch>
-          )}
+          
         </Controls>
-        {appConfig.subtitle && <SubTitle>{detailData.subTitle}</SubTitle>}
-        {appConfig.description && <Description>{detailData.description}</Description>}
+        {appConfig.movieDetailSection.detailPageSubtitle && (
+        <SubTitle>
+          {detailData.subTitle}
+          </SubTitle>
+        )}
+        {appConfig.movieDetailSection.detailPageDescription && <Description>{detailData.description}</Description>}
       </ContentMeta>
     </Container>
+    </>
   );
 };
 const Container = styled.div`

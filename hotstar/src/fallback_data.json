@@ -3,24 +3,42 @@
     "message": "Success",
     "mappings": {
         "appConfig": {
-        "Header": {
-              "headermainlogo":true
+        "header": {
+              "headerMainlogo":true,
+              "loginButton": true
         },
-        "NavbarButton":{
-           "Homebutton": true,
-           "Searchbutton" : true,
-           "Watchlistbutton" : true,
-           "Originalbutton": true,
-           "Moviesbutton" : true,
-           "Seriesbutton" :true
-        },
-        "SilderbarImages":{
-            "Heroimages": true
-}
+        "silderbarImages":{
+            "heroImages": true
+      },
+      "animationVideoSection":{
+          "animationVideosStop": true,
+          "animationVideoSectionHide" : true
+      },
+     
+      "movieSection":{
+       "recommendsForYouMovieSection": true,
+       "originalMovieSection" : true,
+       "trendingMovieSection" : true,
+       "newDisneyMovieSection" : true
+      },
+      "movieDetailSection":{
+        "detailPageBackGroundimage": true,
+        "detailPageTitle" : true,
+        "detailPagePlayButton" : true,
+        "detailPageTrailerButton" : true,
+        "detailPageSubtitle" :true,
+        "detailPageDescription": true
+
+      }
         },
         "playerConfig": {
-            "playvideo": false,
-            "videourl": false
+            "playVideo": true,
+             "videoUrl":  "/videos/insideout2.mp4",
+             "controls": true,
+              "width": "100%",
+             "height": "100%",
+             "volume": 0.9
+
         },
         "filter": {
             "COUNTRY": "IN",

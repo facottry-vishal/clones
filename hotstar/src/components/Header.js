@@ -71,11 +71,11 @@ const Header = () => {
   return (
     <Nav>
       <Logo>
-        {appConfig.Header.headermainlogo && <img src="/images/logo.svg" alt="Disney+" />}
+        {appConfig.header.headerMainlogo && <img src="/images/logo.svg" alt="Disney+" />}
       </Logo>
 
       {!userName ? (
-        appConfig.Login && (
+        appConfig.header.loginButton && (
           <div>
             <Login onClick={handleAuth}>Login</Login>
 
@@ -87,42 +87,30 @@ const Header = () => {
       ) : (
         <>
           <NavMenu>
-            {appConfig.NavbarButton.Homebutton && (
               <a href="/home">
                 <img src="/images/home-icon.svg" alt="HOME" />
                 <span>HOME</span>
               </a>
-            )}
-            {appConfig.NavbarButton.Searchbutton && (
               <a href="/search">
                 <img src="/images/search-icon.svg" alt="SEARCH" />
                 <span>SEARCH</span>
               </a>
-            )}
-            {appConfig.NavbarButton.Watchlistbutton && (
-              <a href="/watchlist">
+             <a href="/watchlist">
                 <img src="/images/watchlist-icon.svg" alt="WATCHLIST" />
                 <span>WATCHLIST</span>
               </a>
-            )}
-            {appConfig.NavbarButton.Originalbutton && (
               <a href="/originals">
                 <img src="/images/original-icon.svg" alt="ORIGINALS" />
                 <span>ORIGINALS</span>
               </a>
-            )}
-            {appConfig.NavbarButton.Moviesbutton && (
               <a href="/movies">
                 <img src="/images/movie-icon.svg" alt="MOVIES" />
                 <span>MOVIES</span>
               </a>
-            )}
-            {appConfig.NavbarButton.Seriesbutton && (
               <a href="/series">
                 <img src="/images/series-icon.svg" alt="SERIES" />
                 <span>SERIES</span>
               </a>
-            )}
           </NavMenu>
           <SignOut>
             <UserImg src={userPhoto} alt={userName} />
