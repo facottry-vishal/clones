@@ -13,11 +13,18 @@ import orders1 from '../assets/images/icons/icon2.png'
 import orders2 from '../assets/images/icons/icon3.png'
 import orders3 from '../assets/images/icons/icon4.png'
 import orders4 from '../assets/images/icons/icon5.png'
-
 import mobileImage from '../assets/images/mobileimage.jpg'
+import useStore from "../store";
+
 const about = () => {
 
   const [isMobile, setIsMobile] = useState(false);
+  const { appConfig } = useStore();
+  if (!appConfig?.aboutButton) {
+    return (
+      <div>Loading aboutButton Config</div>
+    );
+  }
 
   useEffect(() => {
     // Check the screen width on component mount and when it's resized
@@ -37,6 +44,10 @@ const about = () => {
     };
   }, []);
   return <>
+    {appConfig.aboutButton.blogPageSection && (
+
+  <>
+
     <section className="about-wrapper p-5 d-flex justify-content-center align-items-center">
       <div className="container-xxl">
         <div className="row">
@@ -49,6 +60,7 @@ const about = () => {
         </div>
       </div>
     </section>
+    
     <section className="about-us p-5">
       <div className="row">
         <div className="col-md-6">
@@ -61,7 +73,7 @@ const about = () => {
         </div>
       </div>
     </section>
-
+ 
     <section className="about-app p-5">
       <h2 className='fs-1 text-center mb-4' >Download our <Link>App</Link></h2>
       <div className="col-12 p-5 col-md-8 mx-auto">
@@ -74,7 +86,7 @@ const about = () => {
         )}
       </div>
     </section>
-
+   
     <section className="abouts p-5">
       <div className="container-xxl">
         <div className="row">
@@ -211,8 +223,13 @@ const about = () => {
           </div>
         </div>
       </div>
+      
     </section>
-  </>;
+     
+    </>
+    )}
+    </>
+
 }
 
 export default about
