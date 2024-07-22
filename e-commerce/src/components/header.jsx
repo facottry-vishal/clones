@@ -29,7 +29,7 @@ const Header = () => {
 
   // Render loading state if appConfig is not yet loaded
 
-  if (!appConfig?.headerConfig) {
+  if (!appConfig?.header) {
     return (
       <div>Loading Header Config</div>
     );
@@ -41,28 +41,28 @@ const Header = () => {
   };
 
   return (
+  
+
     <>
       <header className='navbar-top p-2'>
         <div className="container-xxl">
           <div className="row">
             <div className="d-flex align-items-center justify-content-between d-none d-md-flex">
               <div className="col-md-8 me-auto">
-                {appConfig.headerConfig.heading1 && (
+              
                   <p className='text-black'>The trending outfits at 100% off</p>
-                )}
+                
               </div>
               <div className="col-md-2">
-                {appConfig.headerConfig.telephone && (
                   <a href="tel:+">Call us at +1 (234) 567-890</a>
-                )}
+                
               </div>
               <div className="col-md">
-                {appConfig.headerConfig.email && (
                   <Link className='links fs-4'><CiMail /></Link>
-                )}
-                {appConfig.headerConfig.call && (
+                
+             
                   <Link className='links fs-4'><BiPhoneCall /></Link>
-                )}
+                
               </div>
             </div>
             <div className="d-flex align-items-center justify-content-between d-md-none">
@@ -89,58 +89,57 @@ const Header = () => {
                 <span className="navbar-toggler-icon">{showMenu ? <AiOutlineClose /> : <AiOutlineMenu />}</span>
               </button>
               <Link to='/'>
-                {appConfig.headerConfig.logo && (
+                {appConfig.header.headerMainLogo && (
                   <img src={logo} alt="logo" className='img-fluid logo' />
                 )}
               </Link>
-              {appConfig.headerConfig.cart && (
                 <button className="cart-span fs-3 d-md-none">
                   <Link to='/cart' className={location.pathname === '/cart' ? 'active' : ''}>
                     <CgShoppingCart />
                     <b><span>{totalProducts} </span></b>
                   </Link>
                 </button>
-              )}
-              {appConfig.headerConfig.login && (
+              
+             
                 <button className='cart-span-2 fs-3 d-md-none'>
                   <Link to='/login' className={location.pathname === '/login' ? 'active' : ''}>
                     <VscAccount />
                   </Link>
                 </button>
-              )}
+            
             </div>
             <div className="col-md-10 row col-lg-10">
               <div className="col-md-3 m-auto">
-                {appConfig.headerConfig.search && (
+                
                   <div className="input-group d-none d-md-flex">
                     <input type="text" className="form-control" placeholder="Find products ..." aria-label="Find products ..." aria-describedby="basic-addon2" />
                     <button className="input-group-text" id="basic-addon2">search</button>
                   </div>
-                )}
+                
               </div>
               <div className="col-md-6 m-auto">
                 <div className='menu-links mt-2 d-none d-md-flex d-lg-flex'>
-                  {appConfig.headerConfig.home && (
+                  {appConfig.navbarButtons.homeButton && (
                     <div className='ms-auto gap-3'>
                       <NavLink to="/" className={location.pathname === '/' ? 'active' : ''} onClick={toggleMenu}>HOME</NavLink>
                     </div>
                   )}
-                  {appConfig.headerConfig.shop && (
+                  {appConfig.navbarButtons.shopButton && (
                     <div className='ms-auto gap-3'>
                       <NavLink to="/shop" className={location.pathname === '/shop' ? 'active' : ''} onClick={toggleMenu}>SHOP</NavLink>
                     </div>
                   )}
-                  {appConfig.headerConfig.blog && (
+                  {appConfig.navbarButtons.blogButton && (
                     <div className='ms-auto gap-3'>
                       <NavLink to="/blog" className={location.pathname === '/blog' ? 'active' : ''} onClick={toggleMenu}>BLOG</NavLink>
                     </div>
                   )}
-                  {appConfig.headerConfig.about && (
+                  {appConfig.navbarButtons.aboutButton && (
                     <div className='ms-auto gap-3'>
                       <NavLink to="/about" className={location.pathname === '/about' ? 'active' : ''} onClick={toggleMenu}>ABOUT</NavLink>
                     </div>
                   )}
-                  {appConfig.headerConfig.contact && (
+                  {appConfig.navbarButtons.contactButton && (
                     <div className='ms-auto gap-3'>
                       <NavLink to="/contact" className={location.pathname === '/contact' ? 'active' : ''} onClick={toggleMenu}>CONTACT</NavLink>
                     </div>
@@ -150,21 +149,20 @@ const Header = () => {
               <div className="col-md-3">
                 <div className="row d-flex justify-content-center">
                   <div className="col-12 col-md-2 d-none d-md-flex d-lg-flex m-auto">
-                    {appConfig.headerConfig.carticon && (
+                    
                       <div className={location.pathname === '/' ? 'active' : ''}>
                         <Link to="/" onClick={toggleMenu} className="d-flex align-items-center color-nav me-3">
                           <CgProductHunt className='me-1 fs-2' />
                         </Link>
                       </div>
-                    )}
-                    {appConfig.headerConfig.loginicon && (
+                    
                       <div className={location.pathname === '/login' ? 'active' : ''}>
                         <Link to="/login" onClick={toggleMenu} className="d-flex align-items-center color-nav me-3">
                           <VscAccount className='me-1 fs-2' />
                         </Link>
                       </div>
-                    )}
-                    {appConfig.headerConfig.tollyicon && (
+                    
+                
                       <div className={location.pathname === '/cart' ? 'active' : ''}>
                         <Link to="/cart" onClick={toggleMenu} className="d-flex align-items-center color-nav me-3 cart-span-one">
                           <CgShoppingCart className='me-1 fs-2' />
@@ -173,7 +171,7 @@ const Header = () => {
                           </div>
                         </Link>
                       </div>
-                    )}
+                    
                   </div>
                 </div>
               </div>
@@ -217,7 +215,9 @@ const Header = () => {
           </div>
         </div>
       </header>
+     
     </>
+    
   );
 };
 

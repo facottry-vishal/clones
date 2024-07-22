@@ -1,35 +1,29 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import useStore from "../store";
+
 
 const Login = () => {
-  const { appConfig } = useStore();
 
   // Render loading state if appConfig is not yet loaded
-  if (!appConfig) {
-    return <div>Loading...</div>;
-  }
+ 
+
 
   return (
     <Container>
       <Content>
         <CTA>
-          {appConfig.loginimages && (
+          
             <CTAlogo1 src="/images/cta-logo-one.svg" alt="" />
-          )}
-          {appConfig.singaleline && (
             <SignUp>GET ALL THERE</SignUp>
-          )}
-          {appConfig.descriptionline && (
+          
             <Description>
               Get Premier Access to Raya and the Last Dragon for an additional fee
               with a Disney+ subscription. As of 03/26/21, the price of Disney+
               and The Disney Bundle will increase by $1.
             </Description>
-          )}
-          {appConfig.images && (
+         
             <CTAlogo2 src="/images/cta-logo-two.png" alt="" />
-          )}
+          
         </CTA>
         <BgImage />
       </Content>

@@ -63,9 +63,12 @@ const Header = () => {
   };
 
   // Render loading state if appConfig is not yet loaded
-  if (!appConfig) {
-    return <div>Loading...</div>;
+  if (!appConfig?.header) {
+    return(
+     <div>loading heade Config</div>
+    );
   }
+  
 
   // Main render function with conditional rendering based on appConfig
   return (

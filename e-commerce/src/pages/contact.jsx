@@ -1,17 +1,10 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
-import jsonData from "../config.json";
 const contact = () => {
-  const toggleConfig = (key) => {
-    // No need to toggle appConfig if not using state
-    // Directly manipulate the jsonData or use a local variable
-    // console.log(`Toggling ${key}`);
-  };
 
-  const contactConfig = jsonData.mappings.customConfig.contactConfig; // Accessing directly from JSON data
   return
    <>
-  {contactConfig.contacthading1 && (
+ 
    <section className="contact-wrapper p-5">
     <div className="container-xxl">
       <div className="row">
@@ -22,7 +15,6 @@ const contact = () => {
       </div>
     </div>
   </section>
-  )}
   <div className="contact-wrapper-details p-5">
     <div className="container-xxl">
       <div className="row text-center align-items-center">

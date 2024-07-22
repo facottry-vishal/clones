@@ -10,4 +10,4 @@ const configStore = create((set) => ({
   setStale: (stale) => set({ stale }),
 }));
 
-export default configStore;
+export default configStore;         

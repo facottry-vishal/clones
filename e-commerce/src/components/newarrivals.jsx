@@ -12,13 +12,13 @@ import useStore from "../store";
 const newarrivals = () => {
   const { appConfig } = useStore();
 
-  if (!appConfig?.newarrivalConfig) {
+  if (!appConfig?.homePageInnewArrivals) {
     return (
       <div>Loading newarrival Config</div>
     );
   }
   return <>
-    {appConfig.newarrivalConfig.newarrival && (
+    {appConfig.homePageInnewArrivals.shopPageProductAllImages && (
     <div  className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 p-3">
       {PRODUCTS1.slice(1, 5).map((product, index) => (
         <div key={index} className="col mb-5">

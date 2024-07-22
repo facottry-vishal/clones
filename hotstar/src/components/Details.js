@@ -27,10 +27,11 @@ const Detail = () => {
   }, [id]);
 
 
-  if (!appConfig) {
-    return <div>Loading...</div>;
+  if (!appConfig?.movieDetailSection) {
+    return(
+     <div>loading movieDetailSection Config</div>
+    );
   }
-
   return (
     <>
     <Container>

@@ -3,73 +3,33 @@
     "message": "Success",
     "mappings": {
       "appConfig": {
-        "headerConfig": {
-          "heading1": true,
-          "telephone": true,
-          "call": true,
-          "email": true,
-          "logo": true,
-          "cart": true,
-          "login": true,
-          "search": true,
-          "home": true,
-          "shop": true,
-          "blog": true,
-          "about": true,
-          "contact": true,
-          "carticon": true,
-          "loginicon": true,
-          "tollyicon": true
+        "header":{
+          "headerMainLogo":true
+          
         },
-        "heroConfig": {
-          "fasticon": true,
-          "supporticon": true,
-          "highicon": true,
-          "quickicon": true
+        "navbarButtons":{
+          "homeButton":true,
+          "shopButton": true,
+          "blogButton": true,
+          "aboutButton": true,
+          "contactButton" :true 
         },
-        "cartitemConfig": {
-          "cartimage": true,
-          "cartname": true,
-          "cartbrand": true,
-          "cartprice": true,
-          "cartquantity": true,
-          "cartstock": true,
-          "count": true,
-          "cartremove": true,
-          "coupancode": true
+        "heroSection":{
+          "heroSectionBannerImage":true,
+          "iconsFastOrderOnlineOrderetc": true
         },
-        "shopConfig": {
-          "shopdetails": true,
-          "shopproduct": true,
-          "shopnumber": true
+        "homePageInfeaturedProductSection":{
+          "featuredProduct4ImagesSection": true
+
         },
-        "blogConfig": {
-          "blog1": true,
-          "blog2": true
+        "homePageInnewArrivals":{
+          "newArrivals4ImagesSection": true
         },
-        "featuredproductConfig": {
-          "featuredproduct": true
+        "shopButtonProductImages":{
+          "shopButtonProductAllImages": true
         },
-        "newarrivalConfig": {
-          "newarrival": true
-        },
-  
-        "newsletterConfig": {
-          "newsletter": true
-        },
-        "contactConfig": {
-          "contacthading1": true
-        },
-        "homeConfig": {
-          "homeconfig1": true,
-          "homeconfig2": true,
-          "homeconfig3": true,
-          "homeconfig4": true,
-          "homeconfig5": true,
-          "homeconfig6": true
-        },
-        "loginConfig": {
-          "login": true
+        "blogButton":{
+          "blogPageSection": false
         }
       },
   

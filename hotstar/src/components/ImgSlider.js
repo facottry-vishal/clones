@@ -18,8 +18,10 @@ const ImgSlider = () => {
   const { appConfig } = useStore();
 
   // Render loading state if appConfig is not yet loaded
-  if (!appConfig) {
-    return <div>Loading...</div>;
+  if (!appConfig?.silderbarImages) {
+    return(
+     <div>loading silderbarImages Config</div>
+    );
   }
 
   return (

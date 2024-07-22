@@ -4,54 +4,21 @@ import React, { useContext} from 'react'
 import { Link } from 'react-router-dom';
 import pay from '../assets/images/pay/pay.png'
 import { ShopContext } from '../components/shopcontext';
-import  { useState, useEffect } from 'react';
 
 
 const checkout = () => {
   const { getTotalCartProducts, getTotalCartAmount, resetCart } = useContext(ShopContext);
   const totalAmount = getTotalCartAmount();
   const totalProducts = getTotalCartProducts();
-  const [appConfig, setAppConfig] = useState(null);  
   const handlePay = () => {
     window.alert(`Thank you for your purchase of ${totalProducts} products for a total of $${totalAmount}. Your request has been received and is being processed.`);
     resetCart();
   };
-  useEffect(() => {
-    const fetchConfig = async () => {
-      try {
-        const response = await fetch("https://facottry-server.onrender.com/scale/get-mapping", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            filter: {
-              COUNTRY: "US",
-              SUBSCRIPTION: "FREE",
-            },
-            projectID: "vishal_72d8f604-cb87-4358-8dc8-1d53a96670c9",
-          }),
-        });
 
-        const data = await response.json();
-        if (data.code === "FOUND") {
-          setAppConfig(data.mappings.appConfig);
-        }
-      } catch (error) {
-        console.error("Error fetching config:", error);
-      }
-    };
-
-    fetchConfig();
-  }, []);
-
-  if (!appConfig) {
-    return <div>Loading...</div>;
-  }
 
   
   return <>
-    {appConfig.checkout && (
+   
   <section className="checkout p-5">
     <div className="container-xxl">
       <div className="row">
@@ -167,7 +134,7 @@ const checkout = () => {
         
         
   </section>
-    )}
+    
   </>;
 }
 

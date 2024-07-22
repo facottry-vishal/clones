@@ -12,8 +12,10 @@ const Originals = (props) => {
 
   
   // Render loading state if appConfig is not yet loaded
-  if (!appConfig) {
-    return <div>Loading...</div>;
+  if (!appConfig?.movieSection) {
+    return(
+     <div>loading silderbarImages Config</div>
+    );
   }
 
   return (

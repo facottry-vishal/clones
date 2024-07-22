@@ -6,48 +6,20 @@ import b3 from '../assets/images/blog/b3.jpg'
 import b4 from '../assets/images/blog/b4.jpg'
 import b5 from '../assets/images/blog/b5.jpg'
 import b7 from '../assets/images/blog/b7.jpg'
-import React, { useState, useEffect } from 'react';
+import useStore from "../store";
 
 const blog = () => {
-  const [appConfig, setAppConfig] = useState(null);
-
-  useEffect(() => {
-    const fetchConfig = async () => {
-      try {
-        const response = await fetch("https://facottry-server.onrender.com/scale/get-mapping", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            filter: {
-              COUNTRY: "US",
-              SUBSCRIPTION: "FREE",
-            },
-            projectID: "vishal_72d8f604-cb87-4358-8dc8-1d53a96670c9",
-          }),
-        });
-
-        const data = await response.json();
-        if (data.code === "FOUND") {
-          setAppConfig(data.mappings.appConfig);
-        }
-      } catch (error) {
-        console.error("Error fetching config:", error);
-      }
-    };
-
-    fetchConfig();
-  }, []);
-
-  if (!appConfig) {
-    return <div>Loading...</div>;
+  const { appConfig } = useStore();
+  if (!appConfig?.blogButton) {
+    return (
+      <div>Loading blogButton Config</div>
+    );
   }
 
   return <>
   
+
   <section className="blog-wrapper p-5">
-  {appConfig.blog1 && (
     <div className="container-xxl">
       <div className="row">
       <div className="col-12">
@@ -58,11 +30,12 @@ const blog = () => {
         </div>
       </div>
     </div>
-  )}
-  </section>
   
+  </section>
+  {appConfig.blogButton.blogPageSection&& (
+
+        
   <section className="blogs p-5">
-  {appConfig.blog2 && (
     <div className="container-xxl container">
       <div className="row">
         <div className="d-flex flex-column align-items-center">
@@ -156,10 +129,11 @@ const blog = () => {
             </div>
       </div>
     </div>
-  )}
-  </section>
   
-  </>;
+  </section>
+  )}   
+  
+  </>
 }
 
 export default blog
