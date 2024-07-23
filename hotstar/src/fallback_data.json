@@ -11,7 +11,7 @@
             "heroImages": true
       },
       "animationVideoSection":{
-          "animationVideosStop": true,
+          "animationVideosStop": false,
           "animationVideoSectionHide" : true
       },
      
