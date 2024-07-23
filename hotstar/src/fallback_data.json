@@ -1,50 +1,48 @@
 {
-    "code": "FOUND",
-    "message": "Success",
-    "mappings": {
-        "appConfig": {
-        "header": {
-              "headerMainlogo":true,
-              "loginButton": true
-        },
-        "silderbarImages":{
-            "heroImages": true
+  "code": "FOUND",
+  "message": "Success",
+  "mappings": {
+    "appConfig": {
+      "header": {
+        "headerMainlogo": true,
+        "loginButton": true
       },
-      "animationVideoSection":{
-          "animationVideosStop": true,
-          "animationVideoSectionHide" : true
+      "silderbarImages": {
+        "heroImages": true
       },
-     
-      "movieSection":{
-       "recommendsForYouMovieSection": true,
-       "originalMovieSection" : true,
-       "trendingMovieSection" : true,
-       "newDisneyMovieSection" : true
+      "animationVideoSection": {
+        "animationVideosStop": true,
+        "animationVideoSectionHide": true
       },
-      "movieDetailSection":{
+
+      "movieSection": {
+        "recommendsForYouMovieSection": true,
+        "originalMovieSection": true,
+        "trendingMovieSection": true,
+        "newDisneyMovieSection": true
+      },
+      "movieDetailSection": {
         "detailPageBackGroundimage": true,
-        "detailPageTitle" : true,
-        "detailPagePlayButton" : true,
-        "detailPageTrailerButton" : true,
-        "detailPageSubtitle" :true,
+        "detailPageTitle": true,
+        "detailPagePlayButton": true,
+        "detailPageTrailerButton": true,
+        "detailPageSubtitle": true,
         "detailPageDescription": true
-
       }
-        },
-        "playerConfig": {
-            "playVideo": true,
-             "videoUrl":  "/videos/insideout2.mp4",
-             "controls": true,
-              "width": "100%",
-             "height": "100%",
-             "volume": 0.8
-
-        },
-        "filter": {
-            "COUNTRY": "IN",
-            "SUBSCRIPTION": "FREE"
-        },
-        "projectID": "vishal_72d8f604-cb87-4358-8dc8-1d53a96670c9",
-        "companyID": "vishal_c22f3172-1e83-47e8-97fc-f921eca1ed73"
-    }
+    },
+    "playerConfig": {
+      "playVideo": true,
+      "videoUrl": "/videos/insideout2.mp4",
+      "controls": true,
+      "width": "100%",
+      "height": "100%",
+      "volume": 0.8
+    },
+    "filter": {
+      "COUNTRY": "IN",
+      "SUBSCRIPTION": "FREE"
+    },
+    "projectID": "vishal_72d8f604-cb87-4358-8dc8-1d53a96670c9",
+    "companyID": "vishal_c22f3172-1e83-47e8-97fc-f921eca1ed73"
+  }
 }

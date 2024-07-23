@@ -14,9 +14,7 @@
               "allMovieSection":true
             }
         },
-        "playerConfig": {
-            "settingButton": "false"
-        },
+        "playerConfig": {},
         "filter": {
             "COUNTRY": "IN",
             "SUBSCRIPTION": "FREE"
