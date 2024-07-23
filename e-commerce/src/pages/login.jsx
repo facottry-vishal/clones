@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import jsonData from "../config.json";
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -19,18 +18,11 @@ const Login = () => {
       setPassword('');
     }
   };
-  const toggleConfig = (key) => {
-    // No need to toggle appConfig if not using state
-    // Directly manipulate the jsonData or use a local variable
-    // console.log(`Toggling ${key}`);
-  };
-
-  const loginConfig = jsonData.mappings.customConfig.loginConfig; // Accessing directly from JSON data
+  
 
   return (
    
     <section className="login-wrapper p-5">
-       {loginConfig.login && (
       <div className="container-xxl">
         <div className="row justify-content-center">
           <div className="col-lg-4 col-md-8 col-sm-10">
@@ -90,7 +82,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-       )}          
+          
     </section>
                   
     );

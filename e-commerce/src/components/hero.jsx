@@ -10,7 +10,7 @@ import useStore from "../store";
 const hero = () => {
   const { appConfig } = useStore();
 
-  if (!appConfig?.heroConfig) {
+  if (!appConfig?.heroSection) {
     return (
       <div>Loading Hero Config</div>
     );
@@ -18,13 +18,15 @@ const hero = () => {
 
   return (
     <>
+              {appConfig.heroSection.iconsFastOrderOnlineOrderetc && (
+
       <section className="hero p-4">
         <div className="container-xxl">
           <div className="row">
             <div className="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 hero-details">
               <div className="row g-4 justify-content-center justify-content-md-between align-items-center">
                 <div className="col-6 col-md-4 col-lg-2">
-                  {appConfig.heroConfig.fasticon && (
+            
                     <div className="card text-center m-auto">
                       <img
                         src={orders}
@@ -35,11 +37,11 @@ const hero = () => {
                         <p className="card-text mb-0">Fast Orders</p>
                       </div>
                     </div>
-                  )}
+                  
                 </div>
 
                 <div className="col-6 col-md-4 col-lg-2">
-                  {appConfig.heroConfig.quickicon && (
+                  
                     <div className="card text-center m-auto">
                       <img
                         src={orders1}
@@ -50,11 +52,10 @@ const hero = () => {
                         <p className="card-text mb-0">Quick Shipping</p>
                       </div>
                     </div>
-                  )}
                 </div>
 
                 <div className="col-6 col-md-4 col-lg-2">
-                  {appConfig.heroConfig.highicon && (
+                 
                     <div className="card text-center m-auto">
                       <img
                         src={orders2}
@@ -65,11 +66,10 @@ const hero = () => {
                         <p className="card-text mb-0">High Saves</p>
                       </div>
                     </div>
-                  )}
+                  
                 </div>
 
                 <div className="col-6 col-md-4 col-lg-2">
-                  {appConfig.heroConfig.supporticon && (
                     <div className="card text-center m-auto">
                       <img
                         src={orders3}
@@ -80,11 +80,10 @@ const hero = () => {
                         <p className="card-text mb-0">24/7 Support</p>
                       </div>
                     </div>
-                  )}
+                  
                 </div>
 
                 <div className="col-6 col-md-4 col-lg-2">
-                  {appConfig.heroConfig.fasticon && (
                     <div className="card text-center m-auto">
                       <img
                         src={orders4}
@@ -95,13 +94,14 @@ const hero = () => {
                         <p className="card-text mb-0">Online Orders</p>
                       </div>
                     </div>
-                  )}
+                  
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
+              )}
     </>
   );
 };

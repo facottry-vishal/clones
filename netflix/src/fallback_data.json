@@ -3,21 +3,16 @@
     "message": "Success",
     "mappings": {
         "appConfig": {
-            "originalname": true,
-            "vote": true,
-            "year": true,
-            "Actor": true,
-            "overview": true,
-            "Towatch": true,
-            "Menu": true,
-            "genres": true,
-            "biglogo": true,
-            "smalllogo": true,
-            "title": true,
-            "movielist": true,
-            "movieRowright": true,
-            "movieRowlist": true,
-            "movieRowitem": true
+            "headerLogoSection":{
+                "headerMainLogo": true,
+                "headerUserLogo": true
+            },
+            "heroSection":{
+                "heroSectionBackgroundImageAndDetalisSection":true
+            },
+            "movieSection":{
+              "allMovieSection":true
+            }
         },
         "playerConfig": {
             "settingButton": "false"

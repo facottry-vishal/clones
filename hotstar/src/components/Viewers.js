@@ -1,58 +1,75 @@
 import styled from "styled-components";
 import React, { useState, useEffect } from "react";
+import useStore from "../store";
 
-const Viewers = ({ appConfig }) => {
-  // Render loading state if appConfig is not yet loaded
-  if (!appConfig) {
-    return <div>Loading...</div>;
-  }
+
+const Viewers = (props) => {
+  const { appConfig } = useStore();
+
+  
+
+// Render loading state if appConfig is not yet loaded
+if (!appConfig?.animationVideoSection) {
+  return(
+   <div>loading silderbarImages Config</div>
+  );
+}
 
   return (
+    <>
+          {appConfig.animationVideoSection.animationVideoSectionHide&&(
     <Container>
-      {appConfig.videodisney && (
         <Wrap>
           <img src="/images/viewers-disney.png" alt="Disney" />
+          {appConfig.animationVideoSection.animationVideosStop &&(
           <video autoPlay loop playsInline>
             <source src="/videos/1564674844-disney.mp4" type="video/mp4" />
           </video>
+          )}
         </Wrap>
-      )}
-      {appConfig.videopixer && (
         <Wrap>
           <img src="/images/viewers-pixar.png" alt="Pixar" />
+          {appConfig.animationVideoSection.animationVideosStop &&(
           <video autoPlay loop playsInline>
             <source src="/videos/1564676714-pixar.mp4" type="video/mp4" />
           </video>
+          )}
         </Wrap>
-      )}
-      {appConfig.videomarvel && (
         <Wrap>
           <img src="/images/viewers-marvel.png" alt="Marvel" />
+          {appConfig.animationVideoSection.animationVideosStop &&(
           <video autoPlay loop playsInline>
             <source src="/videos/1564676115-marvel.mp4" type="video/mp4" />
           </video>
+          )}
         </Wrap>
-      )}
-      {appConfig.videostarwars && (
+      
         <Wrap>
           <img src="/images/viewers-starwars.png" alt="Star Wars" />
+          {appConfig.animationVideoSection.animationVideosStop &&(
           <video autoPlay loop playsInline>
             <source src="/videos/1608229455-star-wars.mp4" type="video/mp4" />
           </video>
+          )}
         </Wrap>
-      )}
-      {appConfig.videonational && (
+      
         <Wrap>
-          <img src="/images/viewers-national.png" alt="National Geographic" />
+          <img
+            src="/images/viewers-national.png"
+            alt="National Geographic"
+          />
+          {appConfig.animationVideoSection.animationVideosStop &&(
           <video autoPlay loop playsInline>
             <source
               src="/videos/1564676296-national-geographic.mp4"
               type="video/mp4"
             />
           </video>
+          )}
         </Wrap>
-      )}
     </Container>
+  )}
+    </>
   );
 };
 

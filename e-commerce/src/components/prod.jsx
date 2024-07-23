@@ -5,14 +5,23 @@ import { ShopContext } from './shopcontext'
 import ReactStars from "react-rating-stars-component";
 import { Link } from 'react-router-dom';
 import Details from '../pages/details';
+import useStore from "../store";
 
 
 const prod = (props) => {
     const {id, name, price, image, brand} = props.data;
     const { addToCart, cartItems, viewProductDetails} = useContext(ShopContext);
+    const { appConfig } = useStore();
 
+    if (!appConfig?.shopButtonProductImages) {
+      return (
+        <div>Loading shopButtonProductImages Config</div>
+      );
+    }
     const cartItemAmount = cartItems[id];
   return <>
+      {appConfig.shopButtonProductImages.shopButtonProductAllImages && (
+
  <div className="col mb-5">
             <Link key={id}  className="card h-100 m-auto">
             <img src={image} className="card-img-top img-fluid" alt="..." />
@@ -51,6 +60,7 @@ const prod = (props) => {
 
             
         </div>
+      )}
   </>
 }
 

@@ -3,31 +3,40 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectTrending } from "../features/movie/movieSlice";
 import React, { useState, useEffect } from "react";
+import useStore from "../store";
 
 const Trending = ({ appConfig }) => {
   const movies = useSelector(selectTrending);
+  const { appConfig } = useStore();
 
+  
+  
   // Render loading state if appConfig is not yet loaded
-  if (!appConfig) {
-    return <div>Loading...</div>;
+  if (!appConfig?.movieSection) {
+    return(
+     <div>loading silderbarImages Config</div>
+    );
   }
   return (
+    <>
+        {appConfig.movieSection.trendingMovieSection &&(
+
     <Container>
-      {appConfig.trendingheading && <h4>Trending</h4>}
-      {appConfig.trendingmovies && (
-        <Content>
-          {movies &&
-            movies.map((movie, key) => (
-              <Wrap key={key}>
-                {movie.id}
-                <Link to={`/detail/` + movie.id}>
-                  <img src={movie.cardImg} alt={movie.title} />
-                </Link>
-              </Wrap>
-            ))}
-        </Content>
-      )}
+      <h4>Trending</h4>
+      <Content>
+        {movies &&
+          movies.map((movie, key) => (
+            <Wrap key={key}>
+              {movie.id}
+              <Link to={`/detail/` + movie.id}>
+                <img src={movie.cardImg} alt={movie.title} />
+              </Link>
+            </Wrap>
+          ))}
+      </Content>
     </Container>
+        )}
+    </>
   );
 };
 

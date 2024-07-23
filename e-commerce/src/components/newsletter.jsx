@@ -1,21 +1,14 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import useStore from "../store";
 
 const Newsletter = () => {
-  const { appConfig } = useStore();
 
 
-  if (!appConfig?.newsletterConfig) {
-    return(
-     <div>loading newsletter Config</div>
-    );
-  }
+ 
 
   return (
     <>
-      {appConfig.newsletterConfig.newsletter && (
         <section className="newsletter p-5">
           <div className="container-xxl">
             <div className="row g-3">
@@ -34,7 +27,7 @@ const Newsletter = () => {
             </div>
           </div>
         </section>
-      )}
+      
     </>
   );
 }

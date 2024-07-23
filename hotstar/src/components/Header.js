@@ -10,12 +10,14 @@ import {
   setSignOutState,
 } from "../features/user/userSlice";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import useStore from "../store";
 
-const Header = ({ appConfig }) => {
+const Header = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const userName = useSelector(selectUserName);
   const userPhoto = useSelector(selectUserPhoto);
+  const { appConfig } = useStore();
 
   // Handle authentication state changes
   useEffect(() => {
@@ -61,19 +63,22 @@ const Header = ({ appConfig }) => {
   };
 
   // Render loading state if appConfig is not yet loaded
-  if (!appConfig) {
-    return <div>Loading...</div>;
+  if (!appConfig?.header) {
+    return(
+     <div>loading heade Config</div>
+    );
   }
+  
 
   // Main render function with conditional rendering based on appConfig
   return (
     <Nav>
       <Logo>
-        {appConfig.Disney && <img src="/images/logo.svg" alt="Disney+" />}
+        {appConfig.header.headerMainlogo && <img src="/images/logo.svg" alt="Disney+" />}
       </Logo>
 
       {!userName ? (
-        appConfig.Login && (
+        appConfig.header.loginButton && (
           <div>
             <Login onClick={handleAuth}>Login</Login>
 
@@ -85,42 +90,30 @@ const Header = ({ appConfig }) => {
       ) : (
         <>
           <NavMenu>
-            {appConfig.home && (
               <a href="/home">
                 <img src="/images/home-icon.svg" alt="HOME" />
                 <span>HOME</span>
               </a>
-            )}
-            {appConfig.search && (
               <a href="/search">
                 <img src="/images/search-icon.svg" alt="SEARCH" />
                 <span>SEARCH</span>
               </a>
-            )}
-            {appConfig.watchlist && (
-              <a href="/watchlist">
+             <a href="/watchlist">
                 <img src="/images/watchlist-icon.svg" alt="WATCHLIST" />
                 <span>WATCHLIST</span>
               </a>
-            )}
-            {appConfig.originals && (
               <a href="/originals">
                 <img src="/images/original-icon.svg" alt="ORIGINALS" />
                 <span>ORIGINALS</span>
               </a>
-            )}
-            {appConfig.movies && (
               <a href="/movies">
                 <img src="/images/movie-icon.svg" alt="MOVIES" />
                 <span>MOVIES</span>
               </a>
-            )}
-            {appConfig.series && (
               <a href="/series">
                 <img src="/images/series-icon.svg" alt="SERIES" />
                 <span>SERIES</span>
               </a>
-            )}
           </NavMenu>
           <SignOut>
             <UserImg src={userPhoto} alt={userName} />

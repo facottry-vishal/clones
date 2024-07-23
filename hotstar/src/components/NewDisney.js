@@ -3,23 +3,32 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectNewDisney } from "../features/movie/movieSlice";
 import React, { useState, useEffect } from "react";
+import useStore from "../store";
 
 
-const NewDisney = ({appConfig}) => {
+
+const NewDisney = () => {
   const movies = useSelector(selectNewDisney);
+  const { appConfig } = useStore();
+
+
   
   // Render loading state if appConfig is not yet loaded
-  if (!appConfig) {
-    return <div>Loading...</div>;
+  if (!appConfig?.movieSection) {
+    return(
+     <div>loading silderbarImages Config</div>
+    );
   }
+
   return (
+    <>
+          
+     {appConfig.movieSection.newDisneyMovieSection&&(
+
     <Container>
-        {appConfig.newtodisney && (
+
       <h4>New to Disney+</h4>
-        )}
-        {appConfig.newmovies && (
       <Content>
-        
         {movies &&
           movies.map((movie, key) => (
             <Wrap key={key}>
@@ -30,8 +39,14 @@ const NewDisney = ({appConfig}) => {
             </Wrap>
           ))}
       </Content>
-        )}
+        
     </Container>
+        
+     )}
+    
+    </>
+    
+        
   );
 };
 

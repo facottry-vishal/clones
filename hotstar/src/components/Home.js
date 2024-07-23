@@ -11,7 +11,8 @@ import db from "../firebase";
 import { setMovies } from "../features/movie/movieSlice";
 import { selectUserName } from "../features/user/userSlice";
 
-const Home = ({ appConfig }) => {
+
+const Home = () => {
   const dispatch = useDispatch();
   const userName = useSelector(selectUserName);
   let recommends = [];

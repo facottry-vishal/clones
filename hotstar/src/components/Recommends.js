@@ -3,23 +3,30 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectRecommend } from "../features/movie/movieSlice";
 import { useEffect, useState } from "react";
+import useStore from "../store";
 
-const Recommends = ({appConfig}) => {
+const Recommends = (props) => {
   const movies = useSelector(selectRecommend); // Move the hook above the conditional statement
+  const { appConfig } = useStore();
+
+ 
 
   // Render loading state if appConfig is not yet loaded
-  if (!appConfig) {
-    return <div>Loading...</div>;
+  if (!appConfig?.movieSection) {
+    return(
+     <div>loading silderbarImages Config</div>
+    );
   }
 
   // console.log(movies, ":🛢️");
 
   return (
+   <>
+    {appConfig.movieSection.recommendsForYouMovieSection &&(
     <Container>
-      {appConfig.recommended && (
+      
         <h4>Recommended for You</h4>
-      )}
-      {appConfig.movierecommended && (
+    
         <Content>
           {movies &&
             movies.map((movie, key) => (
@@ -30,9 +37,13 @@ const Recommends = ({appConfig}) => {
                 </Link>
               </Wrap>
             ))}
+            
         </Content>
-      )}
+      
     </Container>
+  )}  
+    </>
+   
   );
 };
 const Container = styled.div`

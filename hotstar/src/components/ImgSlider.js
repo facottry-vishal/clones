@@ -2,9 +2,10 @@ import styled from "styled-components";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import React, { useState, useEffect } from "react";
+import React from "react";
+import useStore from "../store";
 
-const ImgSlider = ({ appConfig }) => {
+const ImgSlider = () => {
   let settings = {
     dots: true,
     infinite: true,
@@ -14,44 +15,45 @@ const ImgSlider = ({ appConfig }) => {
     autoplay: true,
   };
 
+  const { appConfig } = useStore();
+
   // Render loading state if appConfig is not yet loaded
-  if (!appConfig) {
-    return <div>Loading...</div>;
+  if (!appConfig?.silderbarImages) {
+    return(
+     <div>loading silderbarImages Config</div>
+    );
   }
+
   return (
-    <Carousel {...settings}>
-      {appConfig.imgone && (
-        <Wrap>
-          <a>
-            <img src="/images/slider-badging.jpg" alt="imgone" />
-          </a>
-        </Wrap>
-      )}
-
-      {appConfig.imgtwo && (
-        <Wrap>
-          <a>
-            <img src="/images/slider-scale.jpg" alt="imgtwo" />
-          </a>
-        </Wrap>
-      )}
-
-      {appConfig.imgthree && (
-        <Wrap>
-          <a>
-            <img src="/images/slider-badag.jpg" alt="imgthree" />
-          </a>
-        </Wrap>
-      )}
-
-      {appConfig.imgfour && (
-        <Wrap>
-          <a>
-            <img src="/images/slider-scales.jpg" alt="imgfour" />
-          </a>
-        </Wrap>
-      )}
+   <>
+    {appConfig.silderbarImages.heroImages &&(
+      <Carousel {...settings}>
+        
+      <Wrap>
+        <a>
+          <img src="/images/slider-badging.jpg" alt="imgone" />
+        </a>
+      </Wrap>
+      <Wrap>
+        <a>
+          <img src="/images/slider-scale.jpg" alt="imgtwo" />
+        </a>
+      </Wrap>
+      <Wrap>
+        <a>
+          <img src="/images/slider-badag.jpg" alt="imgthree" />
+        </a>
+      </Wrap>
+      <Wrap>
+        <a>
+          <img src="/images/slider-scales.jpg" alt="imgfour" />
+        </a>
+      
+      </Wrap>
+     
     </Carousel>
+  )}
+    </>
   );
 };
 const Carousel = styled(Slider)`

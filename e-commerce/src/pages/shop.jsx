@@ -4,17 +4,10 @@ import React, { useContext } from 'react'
 import Shopitems from '../components/shopitems';
 import Newsletter from '../components/newsletter';
 import Hero from '../components/hero'
-import jsonData from "../config.json";
 
 
 const shop = () => {
-  const toggleConfig = (key) => {
-    // No need to toggle appConfig if not using state
-    // Directly manipulate the jsonData or use a local variable
-    // console.log(`Toggling ${key}`);
-  };
-
-  const shopConfig = jsonData.mappings.customConfig.shopConfig; // Accessing directly from JSON data
+  
   return <>
 
    <section className="shop-banner p-5">
@@ -22,17 +15,16 @@ const shop = () => {
   <div className="container-xxl">
     <div className="row justify-content-center align-items-center">
       <div className="col-md-8 col-lg-6 text-center">
-      {shopConfig.shopdetails && (
         <div className="shop-details">
           <h1 className="text-white"><b className="title-green">#100%</b> Off On All Products</h1>
           <p className="text-white fs-5">Make your orders we will deliver..</p>
         </div>
-      )}
+      
       </div>
     </div>
   </div>
 </section>
-{shopConfig.shopproduct && (
+
   <section className="featured-products p-5">
     <div className="container-xxl">
       <div className="row">
@@ -40,7 +32,7 @@ const shop = () => {
       </div>
     </div>
   </section>
-)}
+
   <section className="pagination p-2">
     <div className="container-xxl">
       <div className="row">
@@ -52,12 +44,11 @@ const shop = () => {
                   <span aria-hidden="true">&laquo;</span>
                 </a>
               </li>
-              {shopConfig.shopnumber && (
-              <li className="page-item"><a className="page-link" href="#">1</a></li>)}
-                {shopConfig.shopnumber && (
-              <li className="page-item"><a className="page-link" href="#">2</a></li>)}
-              {shopConfig.shopnumber && (
-              <li className="page-item"><a className="page-link" href="#">3</a></li>)}
+              
+              <li className="page-item"><a className="page-link" href="#">1</a></li>
+                
+              <li className="page-item"><a className="page-link" href="#">2</a></li>
+              <li className="page-item"><a className="page-link" href="#">3</a></li>x
               
               <li className="page-item">
                 <a className="page-link" href="#" aria-label="Next">

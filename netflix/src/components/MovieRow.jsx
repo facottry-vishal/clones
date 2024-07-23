@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import './MovieRow.css';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
+import useStore from "../store";
 
-const MovieRow = ({ title, items, appConfig }) => {
+const MovieRow = ({ title, items }) => {
   const [scrollX, setScrollX] = useState(parseInt(localStorage.getItem('scrollX')) || 0);
-  
+  const { appConfig } = useStore();
+
   const handleLeftArrow = () => {
     let x = scrollX;
     x += Math.round(window.innerWidth / 2);
@@ -25,51 +27,50 @@ const MovieRow = ({ title, items, appConfig }) => {
     setScrollX(x);
     localStorage.setItem('scrollX', x);
   };
-
-  if (!appConfig) return <div>Loading...</div>;
+  if (!appConfig?.movieSection) {
+    return(
+     <div>loading movieSection Config</div>
+    );
+  }
 
   return (
+    <>
+    {appConfig.movieSection.allMovieSection && (
+
     <div className="movieRow">
-      {appConfig.title && <h2>{title}</h2>}
-      {appConfig.movielist && (
-        <div className="movieRow--left" onClick={handleLeftArrow}>
-          <FaAngleLeft style={{ fontSize: 50 }} />
+      <h2>{title}</h2>
+      <div className="movieRow--left" onClick={handleLeftArrow}>
+        <FaAngleLeft style={{ fontSize: 50 }} />
+      </div>
+      <div className="movieRow--right" onClick={handleRightArrow}>
+        <FaAngleRight style={{ fontSize: 50 }} />
+      </div>
+      <div className="movieRow--listarea">
+        <div
+          className="movieRow--list"
+          style={{
+            marginLeft: scrollX,
+            width: items.length * 150
+          }}
+        >
+          {items.length > 0 &&
+            items.map((item, key) => (
+              <div key={key} className="movieRow--item">
+                <img
+                  src={item.poster}
+                  alt={item.title}
+                />
+              </div>
+            ))}
         </div>
-      )}
-      {appConfig.movieRowright && (
-        <div className="movieRow--right" onClick={handleRightArrow}>
-          <FaAngleRight style={{ fontSize: 50 }} />
-        </div>
-      )}
-      {appConfig.movieRowlist && (
-        <div className="movieRow--listarea">
-          <div
-            className="movieRow--list"
-            style={{
-              marginLeft: scrollX,
-              width: items.length * 150
-            }}
-          >
-            {items.length > 0 &&
-              items.map((item, key) => (
-                appConfig.movieRowitem && (
-                  <div key={key} className="movieRow--item">
-                    <img
-                      src={item.poster}
-                      alt={item.title}
-                    />
-                  </div>
-                )
-              ))}
-          </div>
-        </div>
-      )}
+      </div>
     </div>
+    )}
+    </>
   );
 };
 
 export default MovieRow;
-
 
 
 

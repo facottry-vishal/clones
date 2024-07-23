@@ -2,27 +2,35 @@
 
 import React from "react";
 import ReactPlayer from "react-player";
-import { useState, useEffect } from "react";
+import  useStore  from "../store"; // Ensure useStore is imported correctly
 
-const Play = ({ playerConfig }) => {
+const Play = () => {
+  const { playerConfig } = useStore();
+
   // Render loading state if appConfig is not yet loaded
   if (!playerConfig) {
     return <div>Loading...</div>;
   }
+
   return (
+    <>
+    {playerConfig.playVideo &&(
     <div className="play-container">
-      {playerConfig.playvideo && <h1>Play Video</h1>}
-      {playerConfig.videourl && (
+      <h1>Play Video</h1>
+     
         <ReactPlayer
-          url={`${process.env.PUBLIC_URL}/videos/insideout2.mp4`}
-          controls={true}
-          width="100%"
-          height="100%"
-          onBuffer={true}
-          light={false}
+          url={playerConfig.videoUrl} // Use the URL from playerConfig
+          controls={playerConfig.controls ?? true} // Default to true if not specified
+          width={playerConfig.width ?? "100%"} // Default to 100% if not specified
+          height={playerConfig.height ?? "100%"} // Default to 100% if not specified
+          onBuffer={playerConfig.onBuffer ?? true} // Default to true if not specified
+          light={playerConfig.light ?? false} // Default to false if not specified
+          volume={playerConfig.volume ?? 0.8} // Default volume to 0.8 if not specified
         />
-      )}
+      
     </div>
+    )}
+    </>
   );
 };
 

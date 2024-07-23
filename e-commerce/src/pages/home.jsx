@@ -13,17 +13,20 @@ import Newsletter from '../components/newsletter';
 import Hero from '../components/hero';
 import useStore from "../store";
 
+
 const Home = () => {
   const { appConfig } = useStore();
-  const homeConfig = appConfig?.homeConfig;
 
-  if (!homeConfig) {
-    return <div>Loading...</div>;
+ 
+  if (!appConfig?.heroSection) {
+    return(
+     <div>Loading Hero Config</div>
+    );
   }
-
   return (
+  
     <>
-      {homeConfig.homeconfig1 && (
+      {appConfig.heroSection.heroSectionBannerImage && (
         <section className="banner">
           <div className="container-xxl">
             <div className="row">
@@ -49,7 +52,6 @@ const Home = () => {
 
       <Hero />
 
-      {homeConfig.homeconfig2 && (
         <section className="featured-products p-4">
           <div className="container-xxl">
             <div className="row">
@@ -61,9 +63,8 @@ const Home = () => {
             </div>
           </div>
         </section>
-      )}
+      
 
-      {homeConfig.homeconfig3 && (
         <section className="repair-services p-5">
           <div className="container-xxl">
             <div className="row ">
@@ -75,9 +76,8 @@ const Home = () => {
             </div>
           </div>
         </section>
-      )}
+      
 
-      {homeConfig.homeconfig4 && (
         <section className="new-arrivals p-4">
           <div className="container-xxl">
             <div className="row">
@@ -89,9 +89,7 @@ const Home = () => {
             </div>
           </div>
         </section>
-      )}
 
-      {homeConfig.homeconfig5 && (
         <section className="hot-deals p-5 d-flex flex-column flex-md-row justify-content-center align-items-center align-items-md-start">
           <div className="container-xxl">
             <div className="row">
@@ -137,9 +135,8 @@ const Home = () => {
             </div>
           </div>
         </section>
-      )}
+      
 
-      {homeConfig.homeconfig6 && (
         <section className="blogs p-5">
           <div className="container-xxl">
             <div className="row">
@@ -197,7 +194,7 @@ const Home = () => {
             </div>
           </div>
         </section>
-      )}
+      
 
       <Newsletter />
     </>

@@ -6,7 +6,7 @@ import useStore from "../store";
 const FeaturedProducts = () => {
   const { appConfig } = useStore();
 
-  if (!appConfig?.featuredproductConfig) {
+  if (!appConfig?.homePageInfeaturedProductSection) {
     return (
       <div>Loading FeaturedProduct Config</div>
     );
@@ -14,7 +14,7 @@ const FeaturedProducts = () => {
 
   return (
     <>
-      {appConfig.featuredproductConfig.featuredproduct && (
+      {appConfig.homePageInfeaturedProductSection.featuredProduct4ImagesSection && (
         <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 p-3">
           {PRODUCTS.slice(2, 6).map((product, index) => (
             <div key={index} className="col mb-5">
