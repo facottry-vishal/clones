@@ -55,12 +55,12 @@ const Home = () => {
 
   return (
     <Container>
-      <ImgSlider appConfig={appConfig} />
-      <Viewers appConfig={appConfig} />
-      <Recommends appConfig={appConfig} />
-      <NewDisney appConfig={appConfig} />
-      <Originals appConfig={appConfig} />
-      <Trending appConfig={appConfig} />
+      <ImgSlider />
+      <Viewers />
+      <Recommends />
+      <NewDisney />
+      <Originals />
+      <Trending />
     </Container>
   );
 };
