@@ -7,11 +7,14 @@ import { ShopContext } from '../components/shopcontext';
 
 
 const checkout = () => {
-  const { getTotalCartProducts, getTotalCartAmount, resetCart } = useContext(ShopContext);
+  const { getTotalCartProducts, getTotalCartAmount, resetCart } =
+    useContext(ShopContext);
   const totalAmount = getTotalCartAmount();
   const totalProducts = getTotalCartProducts();
   const handlePay = () => {
-    window.alert(`Thank you for your purchase of ${totalProducts} products for a total of $${totalAmount}. Your request has been received and is being processed.`);
+    window.alert(
+      `Thank you for your purchase of ${totalProducts} products for a total of $${totalAmount}. Your request has been received and is being processed.`
+    );
     resetCart();
   };
 
@@ -138,4 +141,4 @@ const checkout = () => {
   </>;
 }
 
-export default checkout
+export default checkout;

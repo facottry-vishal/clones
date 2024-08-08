@@ -52,37 +52,37 @@ function App() {
               <Route
                 path="shop"
                 element={
-                  <Shop appConfig={appConfig} playerConfig={playerConfig} />
+                  <Shop />
                 }
               />
               <Route
                 path="blog"
                 element={
-                  <Blog appConfig={appConfig} playerConfig={playerConfig} />
+                  <Blog />
                 }
               />
               <Route
                 path="about"
                 element={
-                  <About appConfig={appConfig} playerConfig={playerConfig} />
+                  <About />
                 }
               />
               <Route
                 path="contact"
                 element={
-                  <Contact appConfig={appConfig} playerConfig={playerConfig} />
+                  <Contact />
                 }
               />
               <Route
                 path="login"
                 element={
-                  <Login appConfig={appConfig} playerConfig={playerConfig} />
+                  <Login />
                 }
               />
               <Route
                 path="signup"
                 element={
-                  <Signup appConfig={appConfig} playerConfig={playerConfig} />
+                  <Signup />
                 }
               />
               <Route
@@ -97,19 +97,19 @@ function App() {
               <Route
                 path="cart"
                 element={
-                  <Cart appConfig={appConfig} playerConfig={playerConfig} />
+                  <Cart />
                 }
               />
               <Route
                 path="checkout"
                 element={
-                  <Checkout appConfig={appConfig} playerConfig={playerConfig} />
+                  <Checkout />
                 }
               />
               <Route
                 path="details"
                 element={
-                  <Details appConfig={appConfig} playerConfig={playerConfig} />
+                  <Details />
                 }
               />
             </Route>

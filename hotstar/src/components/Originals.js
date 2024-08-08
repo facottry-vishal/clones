@@ -5,8 +5,7 @@ import { selectOriginal } from "../features/movie/movieSlice";
 import React, { useState, useEffect } from "react";
 import useStore from "../store";
 
-
-const Originals = (props) => {
+const Originals = () => {
   const movies = useSelector(selectOriginal);
   const { appConfig } = useStore();
 
