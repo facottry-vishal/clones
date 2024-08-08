@@ -1,0 +1,46 @@
+{
+  "code": "FOUND",
+  "message": "Success",
+  "data": {
+    "settings": {
+      "projectID": "vishal_72d8f604-cb87-4358-8dc8-1d53a96670c9",
+      "companyID": "vishal_c22f3172-1e83-47e8-97fc-f921eca1ed73"
+    },
+    "filter": {
+      "COUNTRY": "IN",
+      "SUBSCRIPTION": "FREE"
+    },
+    "mappings": {
+      "appConfig": {
+        "header": {
+          "headerMainLogo": true
+        },
+        "navBarButtons": {
+          "homeButton": true,
+          "seriesButton": true,
+          "movieButton": true,
+          "pageButton": true,
+          "princingButton": true,
+          "contactbutton": true,
+          "fullHeaderHide": true
+        },
+        "heroSection": {
+          "heroSectionBackgroundImage": true,
+          "heroSectionName": false,
+          "heroSectionDetlis": true
+        },
+        "upCommingAndlatestMovieSection": {
+          "upCommingAndlatestSection": true
+        }
+      },
+      "playerConfig": {
+        "playVideo": true,
+        "videoUrl": "https://youtu.be/LEjhY15eCx0",
+        "controls": true,
+        "width": "100%",
+        "height": "100%",
+        "volume": 0.8
+      }
+    }
+  }
+}

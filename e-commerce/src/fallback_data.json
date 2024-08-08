@@ -1,47 +1,46 @@
 {
-    "code": "FOUND",
-    "message": "Success",
+  "code": "FOUND",
+  "message": "Success",
+  "data": {
+    "settings": {
+      "projectID": "vishal_72d8f604-cb87-4358-8dc8-1d53a96670c9",
+      "companyID": "vishal_c22f3172-1e83-47e8-97fc-f921eca1ed73"
+    },
+    "filter": {
+      "COUNTRY": "IN",
+      "SUBSCRIPTION": "FREE"
+    },
     "mappings": {
       "appConfig": {
-        "header":{
-          "headerMainLogo":true  
+        "header": {
+          "headerMainLogo": true
         },
-        "navbarButtons":{
-          "homeButton":true,
+        "navBarButtons": {
+          "homeButton": true,
           "shopButton": true,
           "blogButton": true,
           "aboutButton": true,
-          "contactButton" : true 
+          "contactButton": true
         },
-        "heroSection":{
-          "heroSectionBannerImage":true,
+        "heroSection": {
+          "heroSectionBannerImage": true,
           "iconsFastOrderOnlineOrderetc": true
         },
-        "homePageInfeaturedProductSection":{
-          "featuredProduct4ImagesSection": true
-
-        },
-        "homePageInnewArrivals":{
+        "homePageSections": {
+          "featuredProduct4ImagesSection": true,
           "newArrivals4ImagesSection": true
         },
-        "shopButtonProductImages":{
+        "shopButtonSection": {
           "shopButtonProductAllImages": true
         },
-        "blogButton":{
+        "blogButtonSection": {
           "blogPageSection": true
         },
-        "aboutButton":{
-          "blogPageSection":true
+        "aboutButtonSection": {
+          "blogPageSection": true
         }
       },
-  
-      "playerConfig": {},
-      "filter": {
-        "COUNTRY": "IN",
-        "SUBSCRIPTION": "FREE"
-      },
-      "projectID": "vishal_72d8f604-cb87-4358-8dc8-1d53a96670c9",
-      "companyID": "vishal_c22f3172-1e83-47e8-97fc-f921eca1ed73"
+      "playerConfig": {}
     }
   }
-  
+}
