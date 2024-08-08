@@ -47,15 +47,15 @@ const useFetchConfig = () => {
           }
         );
 
-        const data = response.data;
+        const data = response.data.data;
 
         if (data.code === "FOUND") {
           setAppConfig(data.mappings.appConfig);
           setPlayerConfig(data.mappings.playerConfig);
           setStale(false);
         } else {
-          setAppConfig(fallbackData.mappings.appConfig);
-          setPlayerConfig(fallbackData.mappings.playerConfig);
+          setAppConfig(fallbackData.data.mappings.appConfig);
+          setPlayerConfig(fallbackData.data.mappings.playerConfig);
           setStale(true);
         }
       } catch (error) {
