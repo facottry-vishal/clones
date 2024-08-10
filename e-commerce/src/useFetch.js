@@ -26,8 +26,8 @@ const useFetchConfig = () => {
           projectID = localStorage.getItem("projectID");
         } else {
           projectID = null;
-          setAppConfig(fallbackData.mappings.appConfig);
-          setPlayerConfig(fallbackData.mappings.playerConfig);
+          setAppConfig(fallbackData.data.mappings.appConfig);
+          setPlayerConfig(fallbackData.data.mappings.playerConfig);
           return;
         }
 
@@ -47,11 +47,12 @@ const useFetchConfig = () => {
           }
         );
 
-        const data = response.data.data;
+        const responseAPI = response.data;
+        console.log(responseAPI);
 
-        if (data.code === "FOUND") {
-          setAppConfig(data.mappings.appConfig);
-          setPlayerConfig(data.mappings.playerConfig);
+        if (responseAPI.code === "FOUND") {
+          setAppConfig(responseAPI.data.mappings.appConfig);
+          setPlayerConfig(responseAPI.data.mappings.playerConfig);
           setStale(false);
         } else {
           setAppConfig(fallbackData.data.mappings.appConfig);
@@ -59,7 +60,7 @@ const useFetchConfig = () => {
           setStale(true);
         }
       } catch (error) {
-        console.error("Error fetching live config:", error.response);
+        console.log("Error fetching live config:", error.response);
       }
     };
 

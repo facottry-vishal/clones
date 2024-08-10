@@ -15,7 +15,7 @@
         "header": {
           "headerMainLogo": true
         },
-        "navBarButtons": {
+        "navbarButtons": {
           "homeButton": true,
           "shopButton": true,
           "blogButton": true,
@@ -26,17 +26,19 @@
           "heroSectionBannerImage": true,
           "iconsFastOrderOnlineOrderetc": true
         },
-        "homePageSections": {
-          "featuredProduct4ImagesSection": true,
+        "homePageInfeaturedProductSection": {
+          "featuredProduct4ImagesSection": true
+        },
+        "homePageInnewArrivals": {
           "newArrivals4ImagesSection": true
         },
-        "shopButtonSection": {
+        "shopButtonProductImages": {
           "shopButtonProductAllImages": true
         },
-        "blogButtonSection": {
+        "blogButton": {
           "blogPageSection": true
         },
-        "aboutButtonSection": {
+        "aboutButton": {
           "blogPageSection": true
         }
       },

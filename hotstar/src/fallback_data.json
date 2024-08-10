@@ -13,16 +13,14 @@
     "mappings": {
       "appConfig": {
         "header": {
-          "headerMainLogo": true
-        },
-        "navBarButtons": {
+          "headerMainlogo": true,
           "loginButton": true
         },
-        "heroSection": {
+        "silderbarImages": {
           "heroImages": true
         },
         "animationVideoSection": {
-          "animationVideosStop": false,
+          "animationVideosStop": true,
           "animationVideoSectionHide": true
         },
         "movieSection": {
@@ -42,8 +40,8 @@
       },
       "playerConfig": {
         "playVideo": true,
-        "videoUrl": "/videos/insideout2.mp4",
         "controls": true,
+        "videoUrl": "https://youtu.be/qQlr9-rF32A?si=_KVRJX5oGeiadJ2a",
         "width": "100%",
         "height": "100%",
         "volume": 0.9

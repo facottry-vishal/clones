@@ -80,8 +80,6 @@ const Header = () => {
       {!userName ? (
         appConfig.header.loginButton && (
           <div>
-            <Login onClick={handleAuth}>Login</Login>
-
             <Login>
               <Link to={"/home"}>Dashboard</Link>
             </Login>

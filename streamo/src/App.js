@@ -9,6 +9,13 @@ import useFetchConfig from "../src/useFetch"
 function App() {
   const { appConfig, playerConfig, stale, projectID } = useFetchConfig();
 
+  console.log({
+    appConfig,
+    playerConfig,
+    stale,
+    projectID
+  })
+
   return (
     <div className="App">
       {stale && (
@@ -23,13 +30,11 @@ function App() {
         </div>
       )}
   
-    
       <Router>
         <Header />
         <Switch>
           <Route exact path='/' component={HomePage} />
           <Route path='/singlepage/:id' component={SinglePage} exact />
-          
         </Switch>
         <Footer />
       </Router>
