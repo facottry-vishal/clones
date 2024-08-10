@@ -12,7 +12,7 @@
     },
     "mappings": {
       "appConfig": {
-        "header": {
+        "headerLogoSection": {
           "headerMainLogo": true,
           "headerUserLogo": true
         },
