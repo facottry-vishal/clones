@@ -1,7 +1,26 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import fallbackData from "./fallback_data.json";
 import axios from "axios";
 import configStore from "./store";
+import crypto from "crypto";
+
+export const generateScaleHash = () => {
+  const date = new Date();
+  const currentHour = date.getUTCHours();
+  const currentMinute = Math.floor(date.getUTCMinutes() / 5) * 5;
+  const randomizer = Math.floor(Math.random() * 10);
+  const permanentSalt = "5adf9a7c3be84f966c00dc5c33a4a115f311eb1a962e540c0beccdc5d6d171d4";
+
+  const temporarySalt = `${currentHour}${currentMinute}`;
+  const dataToHash = `${permanentSalt}${temporarySalt}${randomizer}`;
+
+  const generatedHash = crypto
+    .createHash("sha256")
+    .update(dataToHash)
+    .digest("hex");
+
+  return generatedHash;
+};
 
 const useFetchConfig = () => {
   const {
@@ -31,6 +50,8 @@ const useFetchConfig = () => {
           return;
         }
 
+        const hash = generateScaleHash();
+
         const response = await axios.post(
           "https://facottry-server.onrender.com/scale/get-mapping",
           {
@@ -43,6 +64,7 @@ const useFetchConfig = () => {
           {
             headers: {
               "Content-Type": "application/json",
+              "x-client-hash": hash,
             },
           }
         );
