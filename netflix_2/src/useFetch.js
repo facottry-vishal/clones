@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import fallbackData from "./fallback_data.json";
 import axios from "axios";
-import configStore from "./store";
-import crypto from "crypto";
+import configStore from "../src/usestore";
+import hash from "hash.js";
 
 export const generateScaleHash = () => {
   const date = new Date();
@@ -14,10 +14,7 @@ export const generateScaleHash = () => {
   const temporarySalt = `${currentHour}${currentMinute}`;
   const dataToHash = `${permanentSalt}${temporarySalt}${randomizer}`;
 
-  const generatedHash = crypto
-    .createHash("sha256")
-    .update(dataToHash)
-    .digest("hex");
+  const generatedHash = hash.sha256().update(dataToHash).digest("hex");
 
   return generatedHash;
 };

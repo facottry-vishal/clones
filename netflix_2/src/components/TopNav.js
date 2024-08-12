@@ -19,7 +19,7 @@ const TopNav = ({ isScrolled }) => {
   const navigate = useNavigate()
   const { appConfig } = useStore();
   onAuthStateChanged(firebaseAuth, (currentUser) => {
-    if (!currentUser) navigate("/login");
+    if (!currentUser) navigate("/");
   });
   if (!appConfig?.header) {
     return <div>Loading header Config...</div>;
@@ -51,11 +51,7 @@ const TopNav = ({ isScrolled }) => {
                 )}
         </div>
 
-        <div className="rightSide">
-          <button onClick={()=>signOut(firebaseAuth)}>
-            <AiOutlineLogout />
-          </button>
-        </div>
+      
       </nav>
     </NavContainer>
   );
