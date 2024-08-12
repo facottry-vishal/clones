@@ -25,7 +25,7 @@ const Recommends = (props) => {
     {appConfig.movieSection.recommendsForYouMovieSection &&(
     <Container>
       
-        <h4>Recommended for You</h4>
+        <h4>Recommended for You 123</h4>
     
         <Content>
           {movies &&
