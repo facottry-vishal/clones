@@ -1,0 +1,60 @@
+/* Episod */
+
+.watchlist-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); /* Adjust the minmax values as needed */
+  gap: 20px;
+  /* height: 70vh; */
+  justify-content: center; 
+  align-content: start;
+ 
+  /* background-color: aqua; */
+}
+  
+  .watchlist-item {
+    display: flex;
+    /* flex-direction: row; */
+    text-align: center;
+    width: 400px;
+    height: 10rem;
+    gap: 5px;
+    line-height: 25px;
+    border: 1px solid rgb(44, 43, 44);
+    padding: 5px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    transition: transform 0.3s ease;
+  }
+  .watchlist-item:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+  }
+  .watchlist-image {
+    height: 100%;
+    width: 13rem;
+    border-radius: 8px;
+   
+  }
+  
+  .wle-body{
+    background-color: #0a0018;
+    /* border: 1px solid rgb(44, 43, 44); */
+    border-radius: 5px;
+    height:50vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-transform: capitalize;
+    /* background-color: greenyellow;
+     */
+  }
+  
+  .wle-icon{
+    font-size: 150px;
+  }
+  .wle-body h1{
+    color: darkgray;
+  }

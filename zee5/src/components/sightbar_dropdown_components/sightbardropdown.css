@@ -1,0 +1,61 @@
+/* user dropdown */
+
+/* Dropdown container */
+.SightbarDropdown {
+    position: relative;
+    display: inline-block;
+    /* max-width: 300px; */
+    width: 100%;
+    /* margin-bottom: 1.25rem; */
+  }
+  
+  /* Userdropdown button */
+  .SightbarDropdown-toggle {
+    background-color: #171021;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Userdropdown content */
+  .SightbarDropdown-content {
+    display: none;
+    /* position: absolute; */
+    background-color: #171021;
+    min-width: 160px;
+    /* box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); */
+    z-index: 1;
+  }
+  
+  /* Userdropdown links */
+  .SightbarDropdown-link {
+    display: block;
+    padding: 10px 16px;
+    text-decoration: none;
+    color: #ffffff;
+    transition: background-color 0.3s;
+    text-align: left;
+    cursor: pointer;
+  }
+  
+  /* Userdropdown link hover */
+  .SightbarDropdown-link:hover {
+    background-color: #ddd;
+  }
+  
+  /* Show Userdropdown content when the button is clicked */
+  .SightbarDropdown.active .SightbarDropdown-content {
+    display: block;
+  }
+  
+  /* Center the Userdropdown links horizontally */
+  .SightbarDropdown-content {
+    left: 0;
+  }
+  

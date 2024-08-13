@@ -1,0 +1,77 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.home-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* background-color: aqua; */
+    align-items: center;
+    
+}
+.slider{
+    margin-top: 20px;
+    background-color: #0f0024;
+    /* height: 60vh; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.tranding-nu{
+    padding: 10px;
+    width: 100%;
+    max-width: 100%; 
+    position: relative;
+}
+.tranding-nut {
+    padding: 10px;
+    width: 100%;
+    max-width: 100%; 
+    position: relative;
+}
+.tranding-nu h2,.tranding-nut h2{
+    color: #ffffff;
+}
+.tranding-nut .image-cont {
+    width: 300px;
+    height: 150px;
+    border-radius: 10px;
+  }
+
+.cc-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    padding:0 10px;
+    font-size: 16px;
+}
+.m-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: rgb(157, 0, 214);
+    font-weight: bolder;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 1200px) {
+    .cc-header{
+        font-size:11px ;
+    }
+}
+@media screen and (max-width: 1000px) {
+    .slider{
+        margin-top: 65px;
+    }
+}

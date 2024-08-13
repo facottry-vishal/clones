@@ -1,0 +1,278 @@
+.my-acc-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* background-color: aqua; */
+    align-items: center;
+    padding-top:75px;
+    padding-bottom: 20px;
+}
+.my-acc-section{
+    background-color: #0a0018;
+    border: 1px solid rgb(44, 43, 44);
+    border-radius: 5px;
+    height: 90vh;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* align-items: center; */
+    color: white;
+    text-transform: capitalize;
+    line-height: 50px;
+    margin-top: 20px;
+}
+
+.tab-header {
+    padding: 20px 0 20px 0;
+    width: 25vw;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: rgb(33, 26, 39);
+    border: 1px solid rgb(44, 43, 44);
+    color: #fff;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+  
+  .tab {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start; 
+    align-items: center;
+    padding: 5px 0px 5px 50px;
+    cursor: pointer;
+    user-select: none;
+    transition: border-right 0.3s;
+   
+  }
+  
+  /* .tab:hover {
+    border-right: 2px solid white;
+  }
+   */
+  .tab.active {
+    border-right: 2px solid white;
+    font-weight: bold;
+  }
+  
+  .tab-content {
+    padding: 20px;
+    flex-grow: 1;
+    width: 100%;
+    display: flex;
+   flex-direction: column;
+
+  }
+  .tab-item{
+    width: 100%;
+    /* background-color: bisque; */
+  }
+  .tab-item-hr{
+    margin-top: 20px;
+    border-top:1px solid rgb(44, 43, 44);
+  }
+  
+  
+  /* profile  */
+
+
+  .profile-details{
+    display: flex;
+    flex-direction: row;
+    padding: 50px 20px;
+    gap: 20px;
+
+  }
+  .profile-picture {
+    width: 100px;
+    height: 100px;
+    background-color: blueviolet; 
+    border-radius: 50%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  .profile-letter{
+    font-size: 50px;
+    font-weight: bolder; 
+    text-transform: uppercase;
+    color: #ffffff;
+  }
+  .profile-info{
+    line-height: 35px;
+  }
+  .u-email{
+   text-transform: initial;
+  }
+  .up-edit{
+    text-decoration: none;
+    color: blueviolet;
+  }
+
+/*watchlist */
+
+.my-sub-tab-acc-section{
+  background-color: #0a0018;
+    /* border: 1px solid rgb(44, 43, 44); */
+    /* margin-top: 20px; */
+    border-radius: 5px;
+    height:85%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-transform: capitalize;
+    position: relative;
+    bottom: 25px;
+
+}
+.sub-tab-header{
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    cursor: pointer;
+    user-select: none;
+    transition: border-right 0.3s;
+}
+
+.sub-tab {
+  width: 10%;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row; 
+  cursor: pointer;
+  user-select: none;
+  transition: border-right 0.3s;
+ 
+}
+
+.sub-tab.active {
+  color: blueviolet;
+  font-weight: bold;
+}
+.sub-tab-content{
+  border-top: 1px solid rgb(44, 43, 44);
+  /* margin-top: 10px; */
+  width: 100%;
+  max-height: 80vh;
+  height: 100%;
+  padding: 10px;
+  overflow: scroll;
+}
+
+.sub-tab-content::-webkit-scrollbar {
+  display: none;
+}
+/* Subscriptions */
+
+.tab-body{
+  background-color: #0a0018;
+  /* border: 1px solid rgb(44, 43, 44); */
+  border-radius: 5px;
+  /* height:85%; */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-transform: capitalize;
+  /* background-color: greenyellow;
+   */
+}
+
+.tad-empty-icon{
+  font-size: 150px;
+}
+.tab-body h1{
+  color: darkgray;
+}
+
+/* edit profile */
+
+.edit-profile-container{
+  background-color: #0a0018;
+  width: 100%;
+  position: relative;
+  bottom: 121px;
+  right: 20px;
+  
+}
+.edit-profile{
+  line-height: 20px;
+  margin-bottom: 20px;
+}
+.edit-profile input{
+  background-color: transparent;
+  color: #fff;
+}
+.edit-profile input[type="number"]{
+  border: 1px solid white;
+  padding: 10px 10px;
+  width: 100%;
+  border-radius:5px ;
+ }
+.edit-profile input[type="file"]{
+ border: 1px solid white;
+ padding: 10px 10px;
+ width: 100%;
+ border-radius:5px ;
+}
+.ep-btn-con{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 5px;
+}
+.ep-btn{
+  width: 49%;
+  padding: 10px 0;
+  border-radius: 5px;
+  background-color: blueviolet;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+.gep-btn{
+  width: 49%;
+  padding: 10px 0;
+  border-radius: 5px;
+  color: #fff;
+  background-color: transparent;
+  border: 1px solid white;
+  cursor: pointer;
+}
+.tad-empty-desc{
+  text-align: center;
+}
+
+@media screen and (max-width: 1200px){
+  .tab-header {
+   display: none;
+  }
+  .sub-tab-header{
+    
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
+.sub-tab {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+}
+
+@media screen and (max-width: 1000px){
+  .my-acc-section{
+    margin-top: 60px;
+  }
+}

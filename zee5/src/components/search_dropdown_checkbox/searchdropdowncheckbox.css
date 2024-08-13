@@ -1,0 +1,88 @@
+.dropdown-checkbox {
+  display: inline-block;
+  position: relative;
+  width: 250px; 
+  border: none;
+  background-color: #171021;
+  border-radius: 10px;
+  cursor: pointer;
+  user-select: none;
+  font-family: Arial, sans-serif;
+  z-index: 2;
+}
+.dropdown-header {
+  background-color: #171021;
+  color: #ccc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  padding: 8px 10px;
+  cursor: pointer;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  border: none;
+}
+.options-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #0a0018;
+  max-height: 250px;
+  display: none;
+  color: #ffffff;
+  cursor: pointer;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: scroll;
+  font-size: 12px;
+}
+
+.dropdown-checkbox.open .options-list {
+  display: block;
+}
+
+label {
+  display: block;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+
+.selected-content{
+  cursor: pointer;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: initial;
+}
+/* Arrow icon styles */
+.arrow-icon {
+  font-size: 12px;
+}
+
+/* Label and checkbox styles */
+label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+/* Clear button styles */
+.clear-button {
+  color: #ffffff;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-size: initial;
+}
