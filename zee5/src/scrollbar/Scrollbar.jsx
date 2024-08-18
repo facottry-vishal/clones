@@ -3,10 +3,17 @@ import './scrollbar.css'
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css"; 
 import { Link } from 'react-router-dom';
+import useStore from "../store";
 
 function Scrollbar({ imageUrls}) {
   const [images, setImages] = useState([]);
+  const { appConfig } = useStore();
 
+  if (!appConfig?.heroSection) {
+    return (
+      <div>Loading heroSection Config</div>
+    );
+  }
   useEffect(() => {
     setImages(imageUrls);
   }, [imageUrls]);
@@ -38,11 +45,14 @@ function Scrollbar({ imageUrls}) {
         {images.map((imageUrl, index) => (
           <SplideSlide key={index}>
             <Link to={imageUrl.link}>
+            {appConfig.heroSection.heroSectionImages && (
+
             <img
               className="carousel-item"
               src={imageUrl.img}
               alt={`Image ${index + 1}`}
             />
+            )}
             </Link>
           </SplideSlide>
         ))}
