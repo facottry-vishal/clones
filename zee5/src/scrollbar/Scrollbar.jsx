@@ -9,14 +9,15 @@ function Scrollbar({ imageUrls}) {
   const [images, setImages] = useState([]);
   const { appConfig } = useStore();
 
+ 
+  useEffect(() => {
+    setImages(imageUrls);
+  }, [imageUrls]);
   if (!appConfig?.heroSection) {
     return (
       <div>Loading heroSection Config</div>
     );
   }
-  useEffect(() => {
-    setImages(imageUrls);
-  }, [imageUrls]);
 
   return (
     <div className="carousel-wrapper">
@@ -52,7 +53,7 @@ function Scrollbar({ imageUrls}) {
               src={imageUrl.img}
               alt={`Image ${index + 1}`}
             />
-            )}
+             )} 
             </Link>
           </SplideSlide>
         ))}
