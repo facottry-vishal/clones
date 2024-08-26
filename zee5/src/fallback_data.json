@@ -19,6 +19,12 @@
           },
           "heroSection":{
             "heroSectionImages":true
+          },
+          "movieSection":{
+            "allMoviesection":true,
+            "moreMovieSection":true,
+            "movieRommendedheading": false,
+            "watchAndshareButton":false
           }
          
         },

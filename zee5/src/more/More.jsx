@@ -4,6 +4,7 @@ import { FaPlay } from "react-icons/fa6";
 import { PiShareFat } from "react-icons/pi";
 import ShareDropdown from '../carousal/ShareDropdown';
 import './more.css';
+import useStore from "../store";
 
 
 function More() {
@@ -61,9 +62,16 @@ function More() {
     
     window.scrollTo(0, 0);
   }, []);
+  const { appConfig } = useStore();
+
+  if (!appConfig?.movieSection) {
+    return <div>Loading movieSection Config</div>;
+  }
+
   return (
     <div className='more-container'>
-      
+       {appConfig.movieSection.moreMovieSection && (
+
       <div className="more-main">
       <h1 className='more-header'>{heading}</h1>
       {isLoading ? (
@@ -100,7 +108,7 @@ function More() {
         </div>
       )}
       </div>
-      
+       )}
     </div>
   );
 }

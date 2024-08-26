@@ -1,6 +1,5 @@
 import React , { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
-
 function Tranding() {
     const [recommendedContent, setRecommendedContent] = useState([]);
     const [loading, setLoading] = useState(true); 
@@ -40,7 +39,7 @@ function Tranding() {
     if (loading) {
       return <div>Loading...</div>;
     }
-  
+    
     return (
       
         <div className="tr-Container">
@@ -57,8 +56,9 @@ function Tranding() {
             </div>
           ))}
           </div>
+             
         </div>
-      
+        
     );
 }
 

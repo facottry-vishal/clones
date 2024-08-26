@@ -12,17 +12,23 @@ import si6 from '../images/H-scroll-6.png'
 import si7 from '../images/H-scroll-7.png'
 import {carouselHomeData} from '../ConstentData';
 import './home.css'
+import useStore from "../store";
 
 
 const imageUrls = [{img:si1,link:'/details/movie/64cffee700bad552e8dcd52d'}, {img:si2,link:'/details/movie/64cffeee00bad552e8dce9f4'}, {img:si3,link:'/details/movie/64cffee700bad552e8dcd59e'}, {img:si4,link:'/details/web%20series/64cffee700bad552e8dcd551'}, {img:si5,link:'/details/web%20series/64cffeed00bad552e8dce6e8'}, {img:si6,link:'/details/web%20series/64cffee700bad552e8dcd614'}, {img:si7,link:'/details/web%20series/64cffee800bad552e8dcd63a'}
   // Add more image URLs as needed
 ];
-
+  
 function Home() {
   useEffect(() => {
     
     window.scrollTo(0, 0);
   }, []);
+  const { appConfig } = useStore();
+
+  if (!appConfig?.movieSection) {
+    return <div>Loading movieSection Config</div>;
+  }
   return (
     <div className="home-container">
       <section className="slider">
@@ -32,11 +38,16 @@ function Home() {
       {carouselHomeData.map((item, index) => (
         <div className="tranding-nu" key={index}>
           <div className="cc-header">
+          {appConfig.movieSection.movieRommendedheading && (
+
             <h2>{item.heading}</h2>
+          )}
             {/* A dynamic Link to more */}
+            {appConfig.movieSection.watchAndshareButton && (
             <Link to={`/more/${encodeURIComponent(item.apiEndpoint)}/${item.filterType}/${encodeURIComponent(item.heading)}`} className="m-btn">
               More <FaChevronRight />
             </Link>
+            )}
           </div>
           <Carousel apiEndpoint={item.apiEndpoint} filterType={item.filterType} />
         </div>

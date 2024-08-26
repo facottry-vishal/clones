@@ -55,14 +55,18 @@ function RecommendedContent({ type }) {
     fetchRecommendedContent();
   }, [type]);
 
-  
+  // Return early if still loading content or config
   if (loading) {
-    return <div>Loading...</div>;
+    return <div>Loading content...</div>;
   }
 
+
+
+ 
   return (
     <div className='reco-section'>
-      <h1 className='re-heading'>Recommended {type} For You</h1>
+        <h1 className='re-heading'>Recommended {type} For You</h1>
+      
       <div className="rc-Container">
         {recommendedContent.map((data, index) => (
           <div className="image-cont" key={index}>
@@ -77,14 +81,20 @@ function RecommendedContent({ type }) {
               <h5 className='c-name'>{data.title}</h5>
               <div className="a-btn">
                 <button className='wa-btn'>
-                  <Link to={`/details/${data.type}/${data._id}`}><FaPlay className='wa-icon' /> Watch</Link>
+                  <Link to={`/details/${data.type}/${data._id}`}>
+                    <FaPlay className='wa-icon' /> Watch
+                  </Link>
                 </button>
-                <div className="sa-btn-wrapper" >
-                      <button className='sa-btn'  onMouseEnter={openDropdown}>
-                        <PiShareFat className='sa-icon' /> Share
-                      </button>
-                      <ShareDropdown isOpen={isDropdownOpen} onClose={closeDropdown} onLinkClick={handleLinkClick} />
-                    </div>
+                <div className="sa-btn-wrapper">
+                  <button className='sa-btn' onMouseEnter={openDropdown}>
+                    <PiShareFat className='sa-icon' /> Share
+                  </button>
+                  <ShareDropdown 
+                    isOpen={isDropdownOpen} 
+                    onClose={closeDropdown} 
+                    onLinkClick={handleLinkClick} 
+                  />
+                </div>
               </div>
             </div>
           </div>
